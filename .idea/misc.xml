@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ibelm/AndroidStudioProjects/Tic Tac Toe/app/src/main/res/drawable/ic_xo_logo.xml" value="0.22205128205128205" />
+        <entry key="..\:/Users/ibelm/AndroidStudioProjects/Tic Tac Toe/app/src/main/res/drawable/xo_logo.xml" value="0.22205128205128205" />
         <entry key="..\:/Users/ibelm/AndroidStudioProjects/Tic Tac Toe/app/src/main/res/layout/activity_main.xml" value="0.1953125" />
       </map>
     </option>
