@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TicTacToe">
         <activity
-            android:name="com.xo.tictactoe.MainActivity"
+            android:name="com.xo.tictactoe.SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
