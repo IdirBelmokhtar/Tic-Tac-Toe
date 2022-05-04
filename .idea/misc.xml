@@ -3,11 +3,23 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ibelm/AndroidStudioProjects/Tic Tac Toe/app/src/main/res/drawable/background.xml" value="0.18270042194092828" />
+        <entry key="..\:/Users/ibelm/AndroidStudioProjects/Tic Tac Toe/app/src/main/res/drawable/frame.xml" value="0.18270042194092828" />
+        <entry key="..\:/Users/ibelm/AndroidStudioProjects/Tic Tac Toe/app/src/main/res/drawable/frame_circle.xml" value="0.18270042194092828" />
+        <entry key="..\:/Users/ibelm/AndroidStudioProjects/Tic Tac Toe/app/src/main/res/drawable/frame_circle2.xml" value="0.18270042194092828" />
+        <entry key="..\:/Users/ibelm/AndroidStudioProjects/Tic Tac Toe/app/src/main/res/drawable/ic_grid.xml" value="0.17777777777777778" />
+        <entry key="..\:/Users/ibelm/AndroidStudioProjects/Tic Tac Toe/app/src/main/res/drawable/ic_o.xml" value="0.18270042194092828" />
         <entry key="..\:/Users/ibelm/AndroidStudioProjects/Tic Tac Toe/app/src/main/res/drawable/ic_xo_logo.xml" value="0.22205128205128205" />
+        <entry key="..\:/Users/ibelm/AndroidStudioProjects/Tic Tac Toe/app/src/main/res/drawable/icons8_exit.xml" value="0.18270042194092828" />
+        <entry key="..\:/Users/ibelm/AndroidStudioProjects/Tic Tac Toe/app/src/main/res/drawable/icons8_mute.xml" value="0.18270042194092828" />
+        <entry key="..\:/Users/ibelm/AndroidStudioProjects/Tic Tac Toe/app/src/main/res/drawable/icons8_remove_ads.xml" value="0.18270042194092828" />
+        <entry key="..\:/Users/ibelm/AndroidStudioProjects/Tic Tac Toe/app/src/main/res/drawable/play_ai.xml" value="0.18270042194092828" />
+        <entry key="..\:/Users/ibelm/AndroidStudioProjects/Tic Tac Toe/app/src/main/res/drawable/play_multi.xml" value="0.18270042194092828" />
+        <entry key="..\:/Users/ibelm/AndroidStudioProjects/Tic Tac Toe/app/src/main/res/drawable/play_multi_onligne.xml" value="0.18270042194092828" />
         <entry key="..\:/Users/ibelm/AndroidStudioProjects/Tic Tac Toe/app/src/main/res/drawable/xo_logo.xml" value="0.22205128205128205" />
         <entry key="..\:/Users/ibelm/AndroidStudioProjects/Tic Tac Toe/app/src/main/res/layout/activity_main.xml" value="0.16" />
         <entry key="..\:/Users/ibelm/AndroidStudioProjects/Tic Tac Toe/app/src/main/res/layout/activity_main2.xml" value="0.11322463768115942" />
-        <entry key="..\:/Users/ibelm/AndroidStudioProjects/Tic Tac Toe/app/src/main/res/layout/activity_play.xml" value="0.11322463768115942" />
+        <entry key="..\:/Users/ibelm/AndroidStudioProjects/Tic Tac Toe/app/src/main/res/layout/activity_play.xml" value="0.25" />
       </map>
     </option>
   </component>

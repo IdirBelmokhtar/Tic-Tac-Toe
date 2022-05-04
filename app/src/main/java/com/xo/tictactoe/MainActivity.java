@@ -6,10 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ImageView item_ai, item_multi, item_friend;
+    private LinearLayout item_ai, item_multi, item_friend;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,9 +19,9 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportActionBar().hide();
 
-        this.item_ai = (ImageView) findViewById(R.id.item_ai);
-        this.item_multi = (ImageView) findViewById(R.id.item_multi);
-        this.item_friend = (ImageView) findViewById(R.id.item_friend);
+        this.item_ai = (LinearLayout) findViewById(R.id.item_ai);
+        this.item_multi = (LinearLayout) findViewById(R.id.item_multi);
+        this.item_friend = (LinearLayout) findViewById(R.id.item_friend);
 
         item_ai.setOnClickListener(new View.OnClickListener() {
             @Override

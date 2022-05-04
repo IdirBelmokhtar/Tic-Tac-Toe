@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="24sp"
-        android:src="@mipmap/ic_launcher_round"
+        android:src="@drawable/icons8_user"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -20,11 +20,11 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24sp"
+        android:layout_marginStart="12sp"
         android:fontFamily="@font/bebasneue_pro_regular"
         android:text="ID: 123456789"
         android:textColor="@color/white"
-        android:textSize="24sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/circleImageView"
         app:layout_constraintStart_toEndOf="@+id/circleImageView" />
 
@@ -33,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="24dp"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/icons8_remove_ads"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -41,65 +41,106 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="24dp"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/ic_icons8_audio"
         app:layout_constraintEnd_toStartOf="@+id/imageView3"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_margin="16dp"
-        android:gravity="center"
+        android:gravity="start"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:id="@+id/item_ai"
+            android:layout_marginTop="4dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:gravity="center"
+            android:background="@drawable/frame"
+            android:paddingHorizontal="12sp"
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/item_ai"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_margin="12sp"
+                android:src="@drawable/play_ai" />
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/logo_xo"
-                android:layout_marginEnd="12sp"/>
-
-            <ImageView
-                android:id="@+id/item_multi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12sp"
-                android:src="@drawable/logo_xo" />
-
+                android:fontFamily="@font/bebasneue_pro_regular"
+                android:text="Play with AI"
+                android:textColor="@color/white"
+                android:textSize="24sp" />
         </LinearLayout>
+
+
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:id="@+id/item_multi"
+            android:layout_marginTop="4dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:background="@drawable/frame"
+            android:paddingHorizontal="12sp"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/item_friend"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_margin="12sp"
+                android:src="@drawable/play_multi" />
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/logo_xo"
-                android:layout_marginEnd="12sp"/>
+                android:fontFamily="@font/bebasneue_pro_regular"
+                android:text="Multiplayer"
+                android:textColor="@color/white"
+                android:textSize="24sp" />
 
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/item_friend"
+            android:layout_marginTop="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/frame"
+            android:paddingHorizontal="12sp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_margin="12sp"
+                android:src="@drawable/play_multi_onligne" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/bebasneue_pro_regular"
+                android:text="Play with Friend"
+                android:textColor="@color/white"
+                android:textSize="24sp" />
+        </LinearLayout>
     </LinearLayout>
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="24sp"
-        android:src="@mipmap/ic_launcher_round"
+        android:src="@drawable/icons8_exit"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
