@@ -17,17 +17,20 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.ImageDecoderResourceDecoder;
 
+import java.util.Random;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PlayActivity extends AppCompatActivity {
 
     private String s;
-    private CircleImageView circle_player_1, circle_player_2;
+    private CircleImageView circleImageView2, circle_player_1, circle_player_2;
     private LinearLayout item1, item2, item3, item4, item5, item6, item7, item8, item9;
     private ImageView item1_, item2_, item3_, item4_, item5_, item6_, item7_, item8_, item9_;
     private ImageView win_vertical_1, win_vertical_2, win_vertical_3;
     private ImageView win_horizontal_1, win_horizontal_2, win_horizontal_3;
     private ImageView win_diagonal_1, win_diagonal_2;
+    private ImageView reset;
 
     private Boolean turn = false;
     //for X player
@@ -35,7 +38,7 @@ public class PlayActivity extends AppCompatActivity {
     //for O player
     private Boolean itm1_, itm2_, itm3_, itm4_, itm5_, itm6_, itm7_, itm8_, itm9_;
 
-    private TextView nbr_win_p1,nbr_win_p2;
+    private TextView nbr_win_p1, nbr_win_p2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +57,7 @@ public class PlayActivity extends AppCompatActivity {
     }
 
     private void findItems() {
+        this.circleImageView2 = (CircleImageView) findViewById(R.id.circleImageView2);
         this.circle_player_1 = (CircleImageView) findViewById(R.id.circle_player_1);
         this.circle_player_2 = (CircleImageView) findViewById(R.id.circle_player_2);
 
@@ -98,11 +102,38 @@ public class PlayActivity extends AppCompatActivity {
 
         this.nbr_win_p1 = (TextView) findViewById(R.id.nbr_win_p1);
         this.nbr_win_p2 = (TextView) findViewById(R.id.nbr_win_p2);
+
+        this.reset = (ImageView) findViewById(R.id.reset);
+        reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ResetGame("");
+            }
+        });
     }
 
     private void play() {
+        Glide.with(PlayActivity.this).load(R.drawable.ic_icons8_bot).into(circleImageView2);
         if (s.equals("item_ai")) {
-            AiPlay();
+            if (turn.equals(false)) {
+                circle_player_1.setVisibility(View.VISIBLE);
+                circle_player_2.setVisibility(View.GONE);
+                XAiPlay(getResources().getDrawable(R.drawable.ic_x));
+            } else {
+                circle_player_2.setVisibility(View.VISIBLE);
+                circle_player_1.setVisibility(View.GONE);
+                //OAiPlay(getResources().getDrawable(R.drawable.ic_o));
+                //if bot is first the player
+                boolean v =false;
+                AIFunction(   v, v, v
+                        , v, v, v
+                        , v, v, v
+                        , getResources().getDrawable(R.drawable.ic_o)
+                        , v, v, v
+                        , v, v, v
+                        , v, v, v
+                        , item6_, itm6_);
+            }
         }
         if (s.equals("item_multi")) {
             if (turn.equals(false)) {
@@ -120,8 +151,155 @@ public class PlayActivity extends AppCompatActivity {
         }
     }
 
-    private void AiPlay() {
+    private void XAiPlay(Drawable drawable) {
+        Drawable drawable_ = getResources().getDrawable(R.drawable.ic_o);
+        item1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                putItemPlayWithAi(item1_, drawable);
+                itm1 = true;
+                checkForWinner();
+                OAiPlay(drawable_);
+            }
+        });
+        item2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                putItemPlay(item2_, drawable);
+                itm2 = true;
+                checkForWinner();
+                OAiPlay(drawable_);
+            }
+        });
+        item3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                putItemPlay(item3_, drawable);
+                itm3 = true;
+                checkForWinner();
+                OAiPlay(drawable_);
+            }
+        });
+        item4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                putItemPlay(item4_, drawable);
+                itm4 = true;
+                checkForWinner();
+                OAiPlay(drawable_);
+            }
+        });
+        item5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                putItemPlay(item5_, drawable);
+                itm5 = true;
+                checkForWinner();
+                OAiPlay(drawable_);
+            }
+        });
+        item6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                putItemPlay(item6_, drawable);
+                itm6 = true;
+                checkForWinner();
+                OAiPlay(drawable_);
+            }
+        });
+        item7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                putItemPlay(item7_, drawable);
+                itm7 = true;
+                checkForWinner();
+                OAiPlay(drawable_);²
+            }
+        });
+        item8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                putItemPlay(item8_, drawable);
+                itm8 = true;
+                checkForWinner();
+                OAiPlay(drawable_);
+            }
+        });
+        item9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                putItemPlay(item9_, drawable);
+                itm9 = true;
+                checkForWinner();
+                OAiPlay(drawable_);
+            }
+        });
+    }
 
+    private void OAiPlay(Drawable drawable) {
+        //first start
+        boolean X = true;
+        boolean O = true;
+        boolean v = false;
+        //-------------------
+        AIFunction(   X, v, v
+                    , v, v, v
+                    , v, v, v
+                    , drawable
+                    , v, v, v
+                    , v, v, v
+                    , v, v, v
+                    , item6_, itm6_);
+        AIFunction(   X, X, v
+                    , v, v, v
+                    , v, v, v
+                    , drawable
+                    , v, v, v
+                    , v, v, O
+                    , v, v, v
+                    , item9_, itm9_);
+        AIFunction(   X, X, v
+                    , v, X, v
+                    , v, v, v
+                    , drawable
+                    , v, v, v
+                    , v, v, O
+                    , v, v, O
+                    , item7_, itm7_);
+
+        Random random = new Random();
+
+        boolean[] bool = {itm1, itm2, itm3, itm4, itm5, itm6, itm7, itm8, itm9};
+
+
+        int i = random.nextInt(bool.length);
+        Toast.makeText(PlayActivity.this, i + " : " + bool[i], Toast.LENGTH_SHORT).show();
+
+
+    }
+
+    private void AIFunction(boolean x1, boolean x2, boolean x3
+            , boolean x4, boolean x5, boolean x6
+            , boolean x7, boolean x8, boolean x9
+            , Drawable drawable
+            , boolean o1, boolean o2, boolean o3
+            , boolean o4, boolean o5, boolean o6
+            , boolean o7, boolean o8, boolean o9
+            , ImageView item_, Boolean itm_) {
+        if (
+                itm1.equals(x1) && itm2.equals(x2) && itm3.equals(x3) &&
+                        itm4.equals(x4) && itm5.equals(x5) && itm6.equals(x6) &&
+                        itm7.equals(x7) && itm8.equals(x8) && itm9.equals(x9)
+                        &&
+                        itm1_.equals(o1) && itm2_.equals(o2) && itm3_.equals(o3) &&
+                        itm4_.equals(o4) && itm5_.equals(o5) && itm6_.equals(o6) &&
+                        itm7_.equals(o7) && itm8_.equals(o8) && itm9_.equals(o9)
+
+        ) {
+            putItemPlay(item_, drawable);
+            itm_ = true;
+            checkForWinner();
+        }
     }
 
     private void Xplay_(Drawable drawable) {
@@ -274,6 +452,19 @@ public class PlayActivity extends AppCompatActivity {
         });
     }
 
+    private void putItemPlayWithAi(ImageView item, Drawable drawable) {
+        if (item.getVisibility() == View.GONE) {
+            Glide.with(PlayActivity.this).load(drawable).into(item);
+            item.setVisibility(View.VISIBLE);
+            //passer a l'autre player
+
+            turn = !turn;
+        } else {
+            //Toast.makeText(PlayActivity.this, "is visible", Toast.LENGTH_SHORT).show();
+
+        }
+    }
+
     private void putItemPlay(ImageView item, Drawable drawable) {
         if (item.getVisibility() == View.GONE) {
             Glide.with(PlayActivity.this).load(drawable).into(item);
@@ -388,9 +579,9 @@ public class PlayActivity extends AppCompatActivity {
     }
 
     private void ResetGame(String turn) {
-        if (turn.equals("false")){
+        if (turn.equals("false")) {
             nbr_win_p2.setText(String.valueOf(Integer.parseInt(nbr_win_p2.getText().toString()) + 1));
-        }else if (turn.equals("true")){
+        } else if (turn.equals("true")) {
             nbr_win_p1.setText(String.valueOf(Integer.parseInt(nbr_win_p1.getText().toString()) + 1));
         }
         Handler handler = new Handler();
