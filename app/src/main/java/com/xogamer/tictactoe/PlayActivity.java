@@ -478,7 +478,7 @@ public class PlayActivity extends AppCompatActivity {
     }
 
     private void FriendPlay() {
-
+        Toast.makeText(PlayActivity.this, getIntent().getStringExtra("FriendId") + " VS " + getIntent().getStringExtra("id"), Toast.LENGTH_SHORT).show();
     }
 
     private void checkForWinner() {

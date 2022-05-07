@@ -20,7 +20,7 @@
             android:layout_gravity="center"
             android:layout_marginBottom="12sp"
             android:fontFamily="@font/bebasneue_pro_regular"
-            android:text="play with your friend :"
+            android:text="Play with your friend :"
             android:textColor="@color/white2"
             android:textSize="24sp" />
 

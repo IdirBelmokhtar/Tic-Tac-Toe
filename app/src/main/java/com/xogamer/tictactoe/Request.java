@@ -2,9 +2,9 @@ package com.xogamer.tictactoe;
 
 public class Request {
     String id,name,photoUrl,friendName,FriendId;
-    boolean play;
+    String play;
 
-    public Request(String id, String name, String photoUrl, String friendName, String friendId, boolean play) {
+    public Request(String id, String name, String photoUrl, String friendName, String friendId, String play) {
         this.id = id;
         this.name = name;
         this.photoUrl = photoUrl;
@@ -57,11 +57,11 @@ public class Request {
         FriendId = friendId;
     }
 
-    public boolean isPlay() {
+    public String isPlay() {
         return play;
     }
 
-    public void setPlay(boolean play) {
+    public void setPlay(String play) {
         this.play = play;
     }
 }

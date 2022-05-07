@@ -47,8 +47,6 @@ public class MainActivity extends AppCompatActivity {
     DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Players");
     DatabaseReference rqs = FirebaseDatabase.getInstance().getReference("Request");
 
-    //ProgressDialog progressDialog = new ProgressDialog(MainActivity.this);
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,50 +95,53 @@ public class MainActivity extends AppCompatActivity {
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                         Request player = dataSnapshot.getValue(Request.class);
 
-                        if (player.getId().equals(account.getId()) && !player.isPlay()) {
+                        if (player.getId().equals(account.getId()) && player.isPlay().equals("false")) {
 
-                            DialogAcceptFriend acceptFriend = new DialogAcceptFriend(MainActivity.this);
-                            acceptFriend.getAccept_player_name().setText(player.getFriendName());
                             try {
-                                Glide.with(MainActivity.this).load(player.getPhotoUrl()).into(acceptFriend.getAccept_player_image());
-                            } catch (Exception e) {
+                                DialogAcceptFriend acceptFriend = new DialogAcceptFriend(MainActivity.this);
+                                acceptFriend.getAccept_player_name().setText(player.getFriendName());
                                 try {
-                                    Glide.with(MainActivity.this).load(userImg).into(acceptFriend.getAccept_player_image());
-                                } catch (Exception e0) {
+                                    Glide.with(MainActivity.this).load(player.getPhotoUrl()).into(acceptFriend.getAccept_player_image());
+                                } catch (Exception e) {
+                                    try {
+                                        Glide.with(MainActivity.this).load(userImg).into(acceptFriend.getAccept_player_image());
+                                    } catch (Exception e0) {
+                                    }
                                 }
+                                acceptFriend.getAccept_player_button().setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        Toast.makeText(MainActivity.this, "Start", Toast.LENGTH_SHORT).show();
+
+                                        Intent intent = new Intent(getApplicationContext(), PlayActivity.class);
+
+                                        intent.putExtra("play", "item_friend");
+                                        intent.putExtra("FriendId", player.getFriendId());
+                                        intent.putExtra("id", player.getId());
+
+                                        startActivities(new Intent[]{intent});
+
+                                        HashMap<String, Object> hashMap = new HashMap<>();
+                                        hashMap.put("play", "true");
+                                        dataSnapshot.getRef().updateChildren(hashMap);
+
+                                        acceptFriend.dismiss();
+                                    }
+                                });
+                                acceptFriend.getRefuse_player_button().setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+
+                                        HashMap<String, Object> hashMap = new HashMap<>();
+                                        hashMap.put("play", "");
+                                        dataSnapshot.getRef().updateChildren(hashMap);
+
+                                        acceptFriend.dismiss();
+                                    }
+                                });
+                                acceptFriend.build();
+                            } catch (Exception e) {
                             }
-                            acceptFriend.getAccept_player_button().setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View view) {
-                                    Toast.makeText(MainActivity.this, "start: " + player.getFriendId(), Toast.LENGTH_SHORT).show();
-
-                                    Intent intent = new Intent(getApplicationContext(), PlayActivity.class);
-
-                                    intent.putExtra("play", "item_friend");
-                                    intent.putExtra("FriendId", player.getFriendId());
-                                    intent.putExtra("friendName", player.getFriendName());
-
-                                    startActivities(new Intent[]{intent});
-
-                                    HashMap<String, Object> hashMap = new HashMap<>();
-                                    hashMap.put("play", true);
-                                    dataSnapshot.getRef().updateChildren(hashMap);
-
-                                    acceptFriend.dismiss();
-                                }
-                            });
-                            acceptFriend.getRefuse_player_button().setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View view) {
-
-                                    HashMap<String, Object> hashMap = new HashMap<>();
-                                    hashMap.put("play", true);
-                                    dataSnapshot.getRef().updateChildren(hashMap);
-
-                                    acceptFriend.dismiss();
-                                }
-                            });
-                            acceptFriend.build();
 
                         }
                     }
@@ -222,9 +223,7 @@ public class MainActivity extends AppCompatActivity {
                                         //Send And Wait (open popup charged dialogue)
                                         //progress Dialog
                                         try {
-//                                            progressDialog.show();
-//                                            progressDialog.setContentView(R.layout.dialog_chargement);
-//                                            progressDialog.getWindow().setBackgroundDrawableResource(R.color.transparent);
+
                                         } catch (Exception e) {
                                             Toast.makeText(MainActivity.this, "Exception", Toast.LENGTH_SHORT).show();
                                         }
@@ -239,7 +238,7 @@ public class MainActivity extends AppCompatActivity {
                                         }
                                         hashMap1.put("friendName", account.getDisplayName());
                                         hashMap1.put("FriendId", account.getId());
-                                        hashMap1.put("play", false);
+                                        hashMap1.put("play", "false");
 
                                         rqs.push().setValue(hashMap1);
 
@@ -247,7 +246,44 @@ public class MainActivity extends AppCompatActivity {
                                         Toast.makeText(MainActivity.this, "Request: to " + search.getPlayer_name().getText().toString(), Toast.LENGTH_SHORT).show();
                                         search.dismiss();
 
-                                        //if (1 + 1 == 2){}
+                                        //start waiting accept of player friend
+                                        ProgressDialog progressDialog = new ProgressDialog(MainActivity.this);
+                                        progressDialog.show();
+                                        progressDialog.setContentView(R.layout.dialog_chargement);
+                                        progressDialog.getWindow().setBackgroundDrawableResource(R.color.transparent);
+
+                                        rqs.addValueEventListener(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                                                    Request request = dataSnapshot.getValue(Request.class);
+                                                    if (request.getFriendId().equals(account.getId()) && request.getId().equals(friend.getEdttext().getText().toString())
+                                                            && request.isPlay().equals("true")) {
+
+                                                        finish();
+                                                        progressDialog.dismiss();
+                                                        Toast.makeText(MainActivity.this, "Start", Toast.LENGTH_SHORT).show();
+
+                                                        Intent intent = new Intent(getApplicationContext(), PlayActivity.class);
+
+                                                        intent.putExtra("play", "item_friend");
+                                                        intent.putExtra("FriendId", request.getFriendId());
+                                                        intent.putExtra("id", request.getId());
+
+                                                        startActivities(new Intent[]{intent});
+
+                                                        HashMap<String, Object> hashMap = new HashMap<>();
+                                                        hashMap.put("play", "");
+                                                        dataSnapshot.getRef().updateChildren(hashMap);
+                                                    }
+                                                }
+                                            }
+
+                                            @Override
+                                            public void onCancelled(@NonNull DatabaseError error) {
+
+                                            }
+                                        });
                                     }
                                 }
                             });
@@ -267,16 +303,6 @@ public class MainActivity extends AppCompatActivity {
                     });
                     friend.build();
                 }
-
-
-                //Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
-                //startActivity(signInIntent,RC_SIGN_IN);
-
-                Intent intent = new Intent(getApplicationContext(), PlayActivity.class);
-
-                intent.putExtra("play", "item_friend");
-
-                //startActivities(new Intent[]{intent});
             }
         });
 
