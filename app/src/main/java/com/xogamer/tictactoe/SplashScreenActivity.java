@@ -1,4 +1,4 @@
-package com.xo.tictactoe;
+package com.xogamer.tictactoe;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -9,7 +9,7 @@ import android.os.Handler;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
-    private final int SPLASH_SCREEN = 3000;
+    private final int SPLASH_SCREEN = 1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

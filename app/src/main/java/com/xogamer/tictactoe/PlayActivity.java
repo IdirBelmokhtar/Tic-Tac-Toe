@@ -1,10 +1,7 @@
-package com.xo.tictactoe;
+package com.xogamer.tictactoe;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,7 +12,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.ImageDecoderResourceDecoder;
 
 import java.util.Random;
 
@@ -125,14 +121,6 @@ public class PlayActivity extends AppCompatActivity {
                 //OAiPlay(getResources().getDrawable(R.drawable.ic_o));
                 //if bot is first the player
                 boolean v =false;
-                AIFunction(   v, v, v
-                        , v, v, v
-                        , v, v, v
-                        , getResources().getDrawable(R.drawable.ic_o)
-                        , v, v, v
-                        , v, v, v
-                        , v, v, v
-                        , item6_, itm6_);
             }
         }
         if (s.equals("item_multi")) {
@@ -213,7 +201,7 @@ public class PlayActivity extends AppCompatActivity {
                 putItemPlay(item7_, drawable);
                 itm7 = true;
                 checkForWinner();
-                OAiPlay(drawable_);²
+                OAiPlay(drawable_);
             }
         });
         item8.setOnClickListener(new View.OnClickListener() {
@@ -237,6 +225,16 @@ public class PlayActivity extends AppCompatActivity {
     }
 
     private void OAiPlay(Drawable drawable) {
+        //-----!
+        /*        AIFunction(   v, v, v
+                , v, v, v
+                , v, v, v
+                , getResources().getDrawable(R.drawable.ic_o)
+                , v, v, v
+                , v, v, v
+                , v, v, v
+                , item8_, itm8_);*/
+
         //first start
         boolean X = true;
         boolean O = true;

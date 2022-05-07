@@ -7,6 +7,7 @@
         <entry key="..\:/Users/ibelm/AndroidStudioProjects/Tic Tac Toe/app/src/main/res/drawable/frame.xml" value="0.18270042194092828" />
         <entry key="..\:/Users/ibelm/AndroidStudioProjects/Tic Tac Toe/app/src/main/res/drawable/frame_circle.xml" value="0.18270042194092828" />
         <entry key="..\:/Users/ibelm/AndroidStudioProjects/Tic Tac Toe/app/src/main/res/drawable/frame_circle2.xml" value="0.18270042194092828" />
+        <entry key="..\:/Users/ibelm/AndroidStudioProjects/Tic Tac Toe/app/src/main/res/drawable/ic_baseline_send_24.xml" value="0.18270042194092828" />
         <entry key="..\:/Users/ibelm/AndroidStudioProjects/Tic Tac Toe/app/src/main/res/drawable/ic_grid.xml" value="0.17777777777777778" />
         <entry key="..\:/Users/ibelm/AndroidStudioProjects/Tic Tac Toe/app/src/main/res/drawable/ic_icons8_bot.xml" value="0.18270042194092828" />
         <entry key="..\:/Users/ibelm/AndroidStudioProjects/Tic Tac Toe/app/src/main/res/drawable/ic_o.xml" value="0.18270042194092828" />
@@ -22,9 +23,14 @@
         <entry key="..\:/Users/ibelm/AndroidStudioProjects/Tic Tac Toe/app/src/main/res/drawable/play_multi.xml" value="0.18270042194092828" />
         <entry key="..\:/Users/ibelm/AndroidStudioProjects/Tic Tac Toe/app/src/main/res/drawable/play_multi_onligne.xml" value="0.18270042194092828" />
         <entry key="..\:/Users/ibelm/AndroidStudioProjects/Tic Tac Toe/app/src/main/res/drawable/xo_logo.xml" value="0.22205128205128205" />
-        <entry key="..\:/Users/ibelm/AndroidStudioProjects/Tic Tac Toe/app/src/main/res/layout/activity_main.xml" value="0.16" />
+        <entry key="..\:/Users/ibelm/AndroidStudioProjects/Tic Tac Toe/app/src/main/res/layout/activity_google.xml" value="0.17119565217391305" />
+        <entry key="..\:/Users/ibelm/AndroidStudioProjects/Tic Tac Toe/app/src/main/res/layout/activity_main.xml" value="0.5" />
         <entry key="..\:/Users/ibelm/AndroidStudioProjects/Tic Tac Toe/app/src/main/res/layout/activity_main2.xml" value="0.11322463768115942" />
         <entry key="..\:/Users/ibelm/AndroidStudioProjects/Tic Tac Toe/app/src/main/res/layout/activity_play.xml" value="0.25" />
+        <entry key="..\:/Users/ibelm/AndroidStudioProjects/Tic Tac Toe/app/src/main/res/layout/dialog_accept_friend.xml" value="0.22" />
+        <entry key="..\:/Users/ibelm/AndroidStudioProjects/Tic Tac Toe/app/src/main/res/layout/dialog_chargement.xml" value="0.5" />
+        <entry key="..\:/Users/ibelm/AndroidStudioProjects/Tic Tac Toe/app/src/main/res/layout/dialog_search.xml" value="0.16621376811594202" />
+        <entry key="..\:/Users/ibelm/AndroidStudioProjects/Tic Tac Toe/app/src/main/res/layout/dialog_with_friend.xml" value="0.43376623376623374" />
       </map>
     </option>
   </component>

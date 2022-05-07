@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="transparent">#00000000</color>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
@@ -8,5 +9,7 @@
     <color name="black">#121212</color>
     <color name="black2">#3A3A3A</color>
     <color name="white">#FFFFFF</color>
+    <color name="white2">#BFFFFFFF</color>
     <color name="red">#CA0000</color>
+    <color name="green">#14CA00</color>
 </resources>

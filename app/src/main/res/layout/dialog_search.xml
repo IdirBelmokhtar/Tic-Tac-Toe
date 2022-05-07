@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black2"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <LinearLayout
+        android:id="@+id/player"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:orientation="vertical"
+        android:paddingHorizontal="12dp">
+
+        <LinearLayout
+            android:layout_width="380dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/black2"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/player_image"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:src="@drawable/icons8_user" />
+
+            <TextView
+                android:id="@+id/player_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="12sp"
+                android:fontFamily="@font/bebasneue_pro_regular"
+                android:text="@string/no_player"
+                android:textColor="@color/white"
+                android:textSize="24sp" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_weight="1"
+                android:src="@drawable/play_ai"
+                android:layout_gravity="center|end"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

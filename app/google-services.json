@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "603991765098",
+    "firebase_url": "https://tic-tac-toe-ce9a6-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "tic-tac-toe-ce9a6",
     "storage_bucket": "tic-tac-toe-ce9a6.appspot.com"
   },
@@ -13,6 +14,80 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "603991765098-39vvinmrgb6na50jsr6h6pu0eu5msgl0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDr4c-RDi6mdM4A0rQRZT67suB-c3lDRYQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "603991765098-39vvinmrgb6na50jsr6h6pu0eu5msgl0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:603991765098:android:770e3d18bb35ce625bda13",
+        "android_client_info": {
+          "package_name": "com.xo.tictactoe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "603991765098-q0g9h8gq51go0cvqor46dbfcrnvqc4i2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.xo.tictactoe",
+            "certificate_hash": "7df5bcbd5162ce82dda0be5cdc93ea72e468a734"
+          }
+        },
+        {
+          "client_id": "603991765098-39vvinmrgb6na50jsr6h6pu0eu5msgl0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDr4c-RDi6mdM4A0rQRZT67suB-c3lDRYQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "603991765098-39vvinmrgb6na50jsr6h6pu0eu5msgl0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:603991765098:android:542df7e63e3a7bc65bda13",
+        "android_client_info": {
+          "package_name": "com.xogamer.tictactoe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "603991765098-u48pofcq9g9dg2bc47qc86obkoi35v5m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.xogamer.tictactoe",
+            "certificate_hash": "7df5bcbd5162ce82dda0be5cdc93ea72e468a734"
+          }
+        },
         {
           "client_id": "603991765098-39vvinmrgb6na50jsr6h6pu0eu5msgl0.apps.googleusercontent.com",
           "client_type": 3
