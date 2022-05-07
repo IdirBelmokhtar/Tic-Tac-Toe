@@ -126,6 +126,37 @@ public class MainActivity extends AppCompatActivity {
                                         dataSnapshot.getRef().updateChildren(hashMap);
 
                                         acceptFriend.dismiss();
+
+                                        //start Parties in Firebase
+                                        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Parties");
+                                        HashMap<String, Object> objectHashMap = new HashMap<>();
+
+                                        objectHashMap.put("player1",player.getId());
+                                        objectHashMap.put("player2",player.getFriendId());
+                                        objectHashMap.put("play","true");
+                                        objectHashMap.put("turn",false);
+
+                                        objectHashMap.put("itm1",false);
+                                        objectHashMap.put("itm2",false);
+                                        objectHashMap.put("itm3",false);
+                                        objectHashMap.put("itm4",false);
+                                        objectHashMap.put("itm5",false);
+                                        objectHashMap.put("itm6",false);
+                                        objectHashMap.put("itm7",false);
+                                        objectHashMap.put("itm8",false);
+                                        objectHashMap.put("itm9",false);
+
+                                        objectHashMap.put("itm1_",false);
+                                        objectHashMap.put("itm2_",false);
+                                        objectHashMap.put("itm3_",false);
+                                        objectHashMap.put("itm4_",false);
+                                        objectHashMap.put("itm5_",false);
+                                        objectHashMap.put("itm6_",false);
+                                        objectHashMap.put("itm7_",false);
+                                        objectHashMap.put("itm8_",false);
+                                        objectHashMap.put("itm9_",false);
+
+                                        reference.push().setValue(objectHashMap);
                                     }
                                 });
                                 acceptFriend.getRefuse_player_button().setOnClickListener(new View.OnClickListener() {

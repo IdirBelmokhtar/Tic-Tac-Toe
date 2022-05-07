@@ -1,5 +1,6 @@
 package com.xogamer.tictactoe;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.drawable.Drawable;
@@ -12,7 +13,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
 import java.util.Random;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -35,6 +42,8 @@ public class PlayActivity extends AppCompatActivity {
     private Boolean itm1_, itm2_, itm3_, itm4_, itm5_, itm6_, itm7_, itm8_, itm9_;
 
     private TextView nbr_win_p1, nbr_win_p2;
+
+    private DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Parties");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -135,7 +144,44 @@ public class PlayActivity extends AppCompatActivity {
             }
         }
         if (s.equals("item_friend")) {
-            FriendPlay();
+
+            //GetItemsFriendPlay();
+
+            String player1 = getIntent().getStringExtra("id");
+            String player2 = getIntent().getStringExtra("FriendId");
+            reference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                        Parties parties = dataSnapshot.getValue(Parties.class);
+                        if (parties.getPlayer1().equals(player1) && parties.getPlayer2().equals(player2) &&
+                                parties.getTurn().equals(false) && parties.getPlay().equals("true")){
+
+                            circle_player_1.setVisibility(View.VISIBLE);
+                            circle_player_2.setVisibility(View.GONE);
+                            XFriendPlay_(getResources().getDrawable(R.drawable.ic_x), dataSnapshot, parties.getTurn()
+                                    , parties.getItm1(),parties.getItm2(),parties.getItm3(),parties.getItm4(),parties.getItm5(),parties.getItm6(),parties.getItm7(),parties.getItm8(),parties.getItm9()
+                                    , parties.getItm1_(),parties.getItm2_(),parties.getItm3_(),parties.getItm4_(),parties.getItm5_(),parties.getItm6_(),parties.getItm7_(),parties.getItm8_(),parties.getItm9_());
+
+                        }else if (parties.getPlayer1().equals(player1) && parties.getPlayer2().equals(player2) &&
+                                parties.getTurn().equals(true) && parties.getPlay().equals("true")){
+
+                            circle_player_2.setVisibility(View.VISIBLE);
+                            circle_player_1.setVisibility(View.GONE);
+                            OFriendPlay_(getResources().getDrawable(R.drawable.ic_o), dataSnapshot, parties.getTurn()
+                                    , parties.getItm1(),parties.getItm2(),parties.getItm3(),parties.getItm4(),parties.getItm5(),parties.getItm6(),parties.getItm7(),parties.getItm8(),parties.getItm9()
+                                    , parties.getItm1_(),parties.getItm2_(),parties.getItm3_(),parties.getItm4_(),parties.getItm5_(),parties.getItm6_(),parties.getItm7_(),parties.getItm8_(),parties.getItm9_());
+
+
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
         }
     }
 
@@ -450,6 +496,228 @@ public class PlayActivity extends AppCompatActivity {
         });
     }
 
+    private void XFriendPlay_(Drawable drawable, DataSnapshot dataSnapshot, Boolean turn, Boolean itm1, Boolean itm2, Boolean itm3, Boolean itm4, Boolean itm5, Boolean itm6, Boolean itm7, Boolean itm8, Boolean itm9, Boolean itm1_, Boolean itm2_, Boolean itm3_, Boolean itm4_, Boolean itm5_, Boolean itm6_, Boolean itm7_, Boolean itm8_, Boolean itm9_) {
+        item1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                putItemPlayWithFriend(item1_, drawable, turn);
+
+                HashMap<String, Object> hashMap = new HashMap<>();
+                hashMap.put("itm1", true);
+                dataSnapshot.getRef().updateChildren(hashMap);
+
+                checkForWinnerOnline(dataSnapshot,turn,itm1,itm2,itm3,itm4,itm5,itm6,itm7,itm8,itm9,itm1_,itm2_,itm3_,itm4_,itm5_,itm6_,itm7_,itm8_,itm9_);
+            }
+        });
+        item2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                putItemPlayWithFriend(item2_, drawable, turn);
+
+                HashMap<String, Object> hashMap = new HashMap<>();
+                hashMap.put("itm2", true);
+                dataSnapshot.getRef().updateChildren(hashMap);
+
+                checkForWinnerOnline(dataSnapshot,turn,itm1,itm2,itm3,itm4,itm5,itm6,itm7,itm8,itm9,itm1_,itm2_,itm3_,itm4_,itm5_,itm6_,itm7_,itm8_,itm9_);
+            }
+        });
+        item3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                putItemPlayWithFriend(item3_, drawable, turn);
+
+                HashMap<String, Object> hashMap = new HashMap<>();
+                hashMap.put("itm3", true);
+                dataSnapshot.getRef().updateChildren(hashMap);
+
+                checkForWinnerOnline(dataSnapshot,turn,itm1,itm2,itm3,itm4,itm5,itm6,itm7,itm8,itm9,itm1_,itm2_,itm3_,itm4_,itm5_,itm6_,itm7_,itm8_,itm9_);
+            }
+        });
+        item4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                putItemPlayWithFriend(item4_, drawable, turn);
+
+                HashMap<String, Object> hashMap = new HashMap<>();
+                hashMap.put("itm4", true);
+                dataSnapshot.getRef().updateChildren(hashMap);
+
+                checkForWinnerOnline(dataSnapshot,turn,itm1,itm2,itm3,itm4,itm5,itm6,itm7,itm8,itm9,itm1_,itm2_,itm3_,itm4_,itm5_,itm6_,itm7_,itm8_,itm9_);
+            }
+        });
+        item5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                putItemPlayWithFriend(item5_, drawable, turn);
+
+                HashMap<String, Object> hashMap = new HashMap<>();
+                hashMap.put("itm5", true);
+                dataSnapshot.getRef().updateChildren(hashMap);
+
+                checkForWinnerOnline(dataSnapshot,turn,itm1,itm2,itm3,itm4,itm5,itm6,itm7,itm8,itm9,itm1_,itm2_,itm3_,itm4_,itm5_,itm6_,itm7_,itm8_,itm9_);
+            }
+        });
+        item6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                putItemPlayWithFriend(item6_, drawable, turn);
+
+                HashMap<String, Object> hashMap = new HashMap<>();
+                hashMap.put("itm6", true);
+                dataSnapshot.getRef().updateChildren(hashMap);
+
+                checkForWinnerOnline(dataSnapshot,turn,itm1,itm2,itm3,itm4,itm5,itm6,itm7,itm8,itm9,itm1_,itm2_,itm3_,itm4_,itm5_,itm6_,itm7_,itm8_,itm9_);
+            }
+        });
+        item7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                putItemPlayWithFriend(item7_, drawable, turn);
+
+                HashMap<String, Object> hashMap = new HashMap<>();
+                hashMap.put("itm7", true);
+                dataSnapshot.getRef().updateChildren(hashMap);
+
+                checkForWinnerOnline(dataSnapshot,turn,itm1,itm2,itm3,itm4,itm5,itm6,itm7,itm8,itm9,itm1_,itm2_,itm3_,itm4_,itm5_,itm6_,itm7_,itm8_,itm9_);
+            }
+        });
+        item8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                putItemPlayWithFriend(item8_, drawable, turn);
+
+                HashMap<String, Object> hashMap = new HashMap<>();
+                hashMap.put("itm8", true);
+                dataSnapshot.getRef().updateChildren(hashMap);
+
+                checkForWinnerOnline(dataSnapshot,turn,itm1,itm2,itm3,itm4,itm5,itm6,itm7,itm8,itm9,itm1_,itm2_,itm3_,itm4_,itm5_,itm6_,itm7_,itm8_,itm9_);
+            }
+        });
+        item9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                putItemPlayWithFriend(item9_, drawable, turn);
+
+                HashMap<String, Object> hashMap = new HashMap<>();
+                hashMap.put("itm9", true);
+                dataSnapshot.getRef().updateChildren(hashMap);
+
+                checkForWinnerOnline(dataSnapshot,turn,itm1,itm2,itm3,itm4,itm5,itm6,itm7,itm8,itm9,itm1_,itm2_,itm3_,itm4_,itm5_,itm6_,itm7_,itm8_,itm9_);
+            }
+        });
+    }
+
+    private void OFriendPlay_(Drawable drawable, DataSnapshot dataSnapshot, Boolean turn, Boolean itm1, Boolean itm2, Boolean itm3, Boolean itm4, Boolean itm5, Boolean itm6, Boolean itm7, Boolean itm8, Boolean itm9, Boolean itm1_, Boolean itm2_, Boolean itm3_, Boolean itm4_, Boolean itm5_, Boolean itm6_, Boolean itm7_, Boolean itm8_, Boolean itm9_) {
+        item1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                putItemPlayWithFriend(item1_, drawable, turn);
+
+                HashMap<String, Object> hashMap = new HashMap<>();
+                hashMap.put("itm1_", true);
+                dataSnapshot.getRef().updateChildren(hashMap);
+
+                checkForWinnerOnline(dataSnapshot,turn,itm1,itm2,itm3,itm4,itm5,itm6,itm7,itm8,itm9,itm1_,itm2_,itm3_,itm4_,itm5_,itm6_,itm7_,itm8_,itm9_);
+            }
+        });
+        item2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                putItemPlayWithFriend(item2_, drawable, turn);
+
+                HashMap<String, Object> hashMap = new HashMap<>();
+                hashMap.put("itm2_", true);
+                dataSnapshot.getRef().updateChildren(hashMap);
+
+                checkForWinnerOnline(dataSnapshot,turn,itm1,itm2,itm3,itm4,itm5,itm6,itm7,itm8,itm9,itm1_,itm2_,itm3_,itm4_,itm5_,itm6_,itm7_,itm8_,itm9_);
+            }
+        });
+        item3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                putItemPlayWithFriend(item3_, drawable, turn);
+
+                HashMap<String, Object> hashMap = new HashMap<>();
+                hashMap.put("itm3_", true);
+                dataSnapshot.getRef().updateChildren(hashMap);
+
+                checkForWinnerOnline(dataSnapshot,turn,itm1,itm2,itm3,itm4,itm5,itm6,itm7,itm8,itm9,itm1_,itm2_,itm3_,itm4_,itm5_,itm6_,itm7_,itm8_,itm9_);
+            }
+        });
+        item4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                putItemPlayWithFriend(item4_, drawable, turn);
+
+                HashMap<String, Object> hashMap = new HashMap<>();
+                hashMap.put("itm4_", true);
+                dataSnapshot.getRef().updateChildren(hashMap);
+
+                checkForWinnerOnline(dataSnapshot,turn,itm1,itm2,itm3,itm4,itm5,itm6,itm7,itm8,itm9,itm1_,itm2_,itm3_,itm4_,itm5_,itm6_,itm7_,itm8_,itm9_);
+            }
+        });
+        item5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                putItemPlayWithFriend(item5_, drawable, turn);
+
+                HashMap<String, Object> hashMap = new HashMap<>();
+                hashMap.put("itm5_", true);
+                dataSnapshot.getRef().updateChildren(hashMap);
+
+                checkForWinnerOnline(dataSnapshot,turn,itm1,itm2,itm3,itm4,itm5,itm6,itm7,itm8,itm9,itm1_,itm2_,itm3_,itm4_,itm5_,itm6_,itm7_,itm8_,itm9_);
+            }
+        });
+        item6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                putItemPlayWithFriend(item6_, drawable, turn);
+
+                HashMap<String, Object> hashMap = new HashMap<>();
+                hashMap.put("itm6_", true);
+                dataSnapshot.getRef().updateChildren(hashMap);
+
+                checkForWinnerOnline(dataSnapshot,turn,itm1,itm2,itm3,itm4,itm5,itm6,itm7,itm8,itm9,itm1_,itm2_,itm3_,itm4_,itm5_,itm6_,itm7_,itm8_,itm9_);
+            }
+        });
+        item7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                putItemPlayWithFriend(item7_, drawable, turn);
+
+                HashMap<String, Object> hashMap = new HashMap<>();
+                hashMap.put("itm7_", true);
+                dataSnapshot.getRef().updateChildren(hashMap);
+
+                checkForWinnerOnline(dataSnapshot,turn,itm1,itm2,itm3,itm4,itm5,itm6,itm7,itm8,itm9,itm1_,itm2_,itm3_,itm4_,itm5_,itm6_,itm7_,itm8_,itm9_);
+            }
+        });
+        item8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                putItemPlayWithFriend(item8_, drawable, turn);
+
+                HashMap<String, Object> hashMap = new HashMap<>();
+                hashMap.put("itm8_", true);
+                dataSnapshot.getRef().updateChildren(hashMap);
+
+                checkForWinnerOnline(dataSnapshot,turn,itm1,itm2,itm3,itm4,itm5,itm6,itm7,itm8,itm9,itm1_,itm2_,itm3_,itm4_,itm5_,itm6_,itm7_,itm8_,itm9_);
+            }
+        });
+        item9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                putItemPlayWithFriend(item9_, drawable, turn);
+
+                HashMap<String, Object> hashMap = new HashMap<>();
+                hashMap.put("itm9_", true);
+                dataSnapshot.getRef().updateChildren(hashMap);
+
+                checkForWinnerOnline(dataSnapshot,turn,itm1,itm2,itm3,itm4,itm5,itm6,itm7,itm8,itm9,itm1_,itm2_,itm3_,itm4_,itm5_,itm6_,itm7_,itm8_,itm9_);
+            }
+        });
+    }
+
     private void putItemPlayWithAi(ImageView item, Drawable drawable) {
         if (item.getVisibility() == View.GONE) {
             Glide.with(PlayActivity.this).load(drawable).into(item);
@@ -477,8 +745,18 @@ public class PlayActivity extends AppCompatActivity {
         }
     }
 
-    private void FriendPlay() {
-        Toast.makeText(PlayActivity.this, getIntent().getStringExtra("FriendId") + " VS " + getIntent().getStringExtra("id"), Toast.LENGTH_SHORT).show();
+    private void putItemPlayWithFriend(ImageView item, Drawable drawable, Boolean turn) {
+        if (item.getVisibility() == View.GONE) {
+            Glide.with(PlayActivity.this).load(drawable).into(item);
+            item.setVisibility(View.VISIBLE);
+            //passer a l'autre player
+
+            turn = !turn;
+            play();
+        } else {
+            //Toast.makeText(PlayActivity.this, "is visible", Toast.LENGTH_SHORT).show();
+
+        }
     }
 
     private void checkForWinner() {
@@ -609,5 +887,160 @@ public class PlayActivity extends AppCompatActivity {
         }, 2000);
     }
 
+    private void checkForWinnerOnline(DataSnapshot dataSnapshot, Boolean turn, Boolean itm1, Boolean itm2, Boolean itm3, Boolean itm4, Boolean itm5, Boolean itm6, Boolean itm7, Boolean itm8, Boolean itm9, Boolean itm1_, Boolean itm2_, Boolean itm3_, Boolean itm4_, Boolean itm5_, Boolean itm6_, Boolean itm7_, Boolean itm8_, Boolean itm9_) {
+        //if X player win
+        try {
+
+            if (itm1.equals(itm2) && itm1.equals(itm3) && itm1.equals(true)) {
+                win_horizontal_1.setVisibility(View.VISIBLE);
+                ResetGameOnline(dataSnapshot,String.valueOf(turn));
+            }
+            if (itm4.equals(itm5) && itm4.equals(itm6) && itm4.equals(true)) {
+                win_horizontal_2.setVisibility(View.VISIBLE);
+                ResetGameOnline(dataSnapshot,String.valueOf(turn));
+            }
+            if (itm7.equals(itm8) && itm7.equals(itm9) && itm7.equals(true)) {
+                win_horizontal_3.setVisibility(View.VISIBLE);
+                ResetGameOnline(dataSnapshot,String.valueOf(turn));
+            }
+            if (itm1.equals(itm4) && itm1.equals(itm7) && itm1.equals(true)) {
+                win_vertical_1.setVisibility(View.VISIBLE);
+                ResetGameOnline(dataSnapshot,String.valueOf(turn));
+            }
+            if (itm2.equals(itm5) && itm2.equals(itm8) && itm2.equals(true)) {
+                win_vertical_2.setVisibility(View.VISIBLE);
+                ResetGameOnline(dataSnapshot,String.valueOf(turn));
+            }
+            if (itm3.equals(itm6) && itm3.equals(itm9) && itm3.equals(true)) {
+                win_vertical_3.setVisibility(View.VISIBLE);
+                ResetGameOnline(dataSnapshot,String.valueOf(turn));
+            }
+            if (itm1.equals(itm5) && itm1.equals(itm9) && itm1.equals(true)) {
+                win_diagonal_1.setVisibility(View.VISIBLE);
+                ResetGameOnline(dataSnapshot,String.valueOf(turn));
+            }
+            if (itm3.equals(itm5) && itm3.equals(itm7) && itm3.equals(true)) {
+                win_diagonal_2.setVisibility(View.VISIBLE);
+                ResetGameOnline(dataSnapshot,String.valueOf(turn));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //if O player win
+        try {
+
+            if (itm1_.equals(itm2_) && itm1_.equals(itm3_) && itm1_.equals(true)) {
+                win_horizontal_1.setVisibility(View.VISIBLE);
+                ResetGameOnline(dataSnapshot,String.valueOf(turn));
+            }
+            if (itm4_.equals(itm5_) && itm4_.equals(itm6_) && itm4_.equals(true)) {
+                win_horizontal_2.setVisibility(View.VISIBLE);
+                ResetGameOnline(dataSnapshot,String.valueOf(turn));
+            }
+            if (itm7_.equals(itm8_) && itm7_.equals(itm9_) && itm7_.equals(true)) {
+                win_horizontal_3.setVisibility(View.VISIBLE);
+                ResetGameOnline(dataSnapshot,String.valueOf(turn));
+            }
+            if (itm1_.equals(itm4_) && itm1_.equals(itm7_) && itm1_.equals(true)) {
+                win_vertical_1.setVisibility(View.VISIBLE);
+                ResetGameOnline(dataSnapshot,String.valueOf(turn));
+            }
+            if (itm2_.equals(itm5_) && itm2_.equals(itm8_) && itm2_.equals(true)) {
+                win_vertical_2.setVisibility(View.VISIBLE);
+                ResetGameOnline(dataSnapshot,String.valueOf(turn));
+            }
+            if (itm3_.equals(itm6_) && itm3_.equals(itm9_) && itm3_.equals(true)) {
+                win_vertical_3.setVisibility(View.VISIBLE);
+                ResetGameOnline(dataSnapshot,String.valueOf(turn));
+            }
+            if (itm1_.equals(itm5_) && itm1_.equals(itm9_) && itm1_.equals(true)) {
+                win_diagonal_1.setVisibility(View.VISIBLE);
+                ResetGameOnline(dataSnapshot,String.valueOf(turn));
+            }
+            if (itm3_.equals(itm5_) && itm3_.equals(itm7_) && itm3_.equals(true)) {
+                win_diagonal_2.setVisibility(View.VISIBLE);
+                ResetGameOnline(dataSnapshot,String.valueOf(turn));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //if draw no win
+        try {
+            if (win_vertical_1.getVisibility() == View.GONE && win_vertical_2.getVisibility() == View.GONE && win_vertical_3.getVisibility() == View.GONE &&
+                    win_horizontal_1.getVisibility() == View.GONE && win_horizontal_2.getVisibility() == View.GONE && win_horizontal_3.getVisibility() == View.GONE &&
+                    win_diagonal_1.getVisibility() == View.GONE && win_diagonal_2.getVisibility() == View.GONE
+                    &&
+                    item1_.getVisibility() == View.VISIBLE && item2_.getVisibility() == View.VISIBLE && item3_.getVisibility() == View.VISIBLE &&
+                    item4_.getVisibility() == View.VISIBLE && item5_.getVisibility() == View.VISIBLE && item6_.getVisibility() == View.VISIBLE &&
+                    item7_.getVisibility() == View.VISIBLE && item8_.getVisibility() == View.VISIBLE && item9_.getVisibility() == View.VISIBLE
+            ) {
+                Toast.makeText(PlayActivity.this, "Draw", Toast.LENGTH_SHORT).show();
+                ResetGameOnline(dataSnapshot,"");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void ResetGameOnline(DataSnapshot dataSnapshot, String turn) {
+        if (turn.equals("false")) {
+            nbr_win_p2.setText(String.valueOf(Integer.parseInt(nbr_win_p2.getText().toString()) + 1));
+        } else if (turn.equals("true")) {
+            nbr_win_p1.setText(String.valueOf(Integer.parseInt(nbr_win_p1.getText().toString()) + 1));
+        }else if (turn.equals("")){
+            turn = String.valueOf(true);
+        }
+        Handler handler = new Handler();
+        String finalTurn = turn;
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                item1_.setVisibility(View.GONE);
+                item2_.setVisibility(View.GONE);
+                item3_.setVisibility(View.GONE);
+                item4_.setVisibility(View.GONE);
+                item5_.setVisibility(View.GONE);
+                item6_.setVisibility(View.GONE);
+                item7_.setVisibility(View.GONE);
+                item8_.setVisibility(View.GONE);
+                item9_.setVisibility(View.GONE);
+                win_vertical_1.setVisibility(View.GONE);
+                win_vertical_2.setVisibility(View.GONE);
+                win_vertical_3.setVisibility(View.GONE);
+                win_horizontal_1.setVisibility(View.GONE);
+                win_horizontal_2.setVisibility(View.GONE);
+                win_horizontal_3.setVisibility(View.GONE);
+                win_diagonal_1.setVisibility(View.GONE);
+                win_diagonal_2.setVisibility(View.GONE);
+
+
+                HashMap<String, Object> objectHashMap = new HashMap<>();
+
+                objectHashMap.put("play","true");
+                objectHashMap.put("turn", finalTurn);
+
+                objectHashMap.put("itm1",false);
+                objectHashMap.put("itm2",false);
+                objectHashMap.put("itm3",false);
+                objectHashMap.put("itm4",false);
+                objectHashMap.put("itm5",false);
+                objectHashMap.put("itm6",false);
+                objectHashMap.put("itm7",false);
+                objectHashMap.put("itm8",false);
+                objectHashMap.put("itm9",false);
+
+                objectHashMap.put("itm1_",false);
+                objectHashMap.put("itm2_",false);
+                objectHashMap.put("itm3_",false);
+                objectHashMap.put("itm4_",false);
+                objectHashMap.put("itm5_",false);
+                objectHashMap.put("itm6_",false);
+                objectHashMap.put("itm7_",false);
+                objectHashMap.put("itm8_",false);
+                objectHashMap.put("itm9_",false);
+
+                dataSnapshot.getRef().updateChildren(objectHashMap);
+            }
+        }, 2000);
+    }
 
 }
