@@ -58,6 +58,7 @@ public class PlayActivity extends AppCompatActivity {
 
         itm1 = itm2 = itm3 = itm4 = itm5 = itm6 = itm7 = itm8 = itm9 = false;
         itm1_ = itm2_ = itm3_ = itm4_ = itm5_ = itm6_ = itm7_ = itm8_ = itm9_ = false;
+
         play();
     }
 
@@ -129,7 +130,7 @@ public class PlayActivity extends AppCompatActivity {
                 circle_player_1.setVisibility(View.GONE);
                 //OAiPlay(getResources().getDrawable(R.drawable.ic_o));
                 //if bot is first the player
-                boolean v =false;
+                boolean v = false;
             }
         }
         if (s.equals("item_multi")) {
@@ -145,33 +146,140 @@ public class PlayActivity extends AppCompatActivity {
         }
         if (s.equals("item_friend")) {
 
-            //GetItemsFriendPlay();
-
             String player1 = getIntent().getStringExtra("id");
             String player2 = getIntent().getStringExtra("FriendId");
+
             reference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                        Parties part = dataSnapshot.getValue(Parties.class);
+                        if (part.getPlayer1().equals(player1) && part.getPlayer2().equals(player2) && part.getPlay().equals("true")) {
+
+                            if (part.getItm1().equals("false") && part.getItm2().equals("false") && part.getItm3().equals("false") && part.getItm4().equals("false") && part.getItm5().equals("false") && part.getItm6().equals("false") && part.getItm7().equals("false") && part.getItm8().equals("false") && part.getItm9().equals("false")){
+                                restItems();
+                            }
+
+                            if (part.getItm1().equals("x")) {
+                                Glide.with(PlayActivity.this).load(getResources().getDrawable(R.drawable.ic_x)).into(item1_);
+                                item1_.setVisibility(View.VISIBLE);
+                                itm1 = true;
+                            }
+                            if (part.getItm1().equals("o")) {
+                                Glide.with(PlayActivity.this).load(getResources().getDrawable(R.drawable.ic_o)).into(item1_);
+                                item1_.setVisibility(View.VISIBLE);
+                                itm1_ = true;
+                            }
+                            if (part.getItm2().equals("x")) {
+                                Glide.with(PlayActivity.this).load(getResources().getDrawable(R.drawable.ic_x)).into(item2_);
+                                item2_.setVisibility(View.VISIBLE);
+                                itm2 = true;
+                            }
+                            if (part.getItm2().equals("o")) {
+                                Glide.with(PlayActivity.this).load(getResources().getDrawable(R.drawable.ic_o)).into(item2_);
+                                item2_.setVisibility(View.VISIBLE);
+                                itm2_ = true;
+                            }
+                            if (part.getItm3().equals("x")) {
+                                Glide.with(PlayActivity.this).load(getResources().getDrawable(R.drawable.ic_x)).into(item3_);
+                                item3_.setVisibility(View.VISIBLE);
+                                itm3 = true;
+                            }
+                            if (part.getItm3().equals("o")) {
+                                Glide.with(PlayActivity.this).load(getResources().getDrawable(R.drawable.ic_o)).into(item1_);
+                                item3_.setVisibility(View.VISIBLE);
+                                itm3_ = true;
+                            }
+                            if (part.getItm4().equals("x")) {
+                                Glide.with(PlayActivity.this).load(getResources().getDrawable(R.drawable.ic_x)).into(item4_);
+                                item4_.setVisibility(View.VISIBLE);
+                                itm4 = true;
+                            }
+                            if (part.getItm7().equals("o")) {
+                                Glide.with(PlayActivity.this).load(getResources().getDrawable(R.drawable.ic_o)).into(item4_);
+                                item4_.setVisibility(View.VISIBLE);
+                                itm4_ = true;
+                            }
+                            if (part.getItm5().equals("x")) {
+                                Glide.with(PlayActivity.this).load(getResources().getDrawable(R.drawable.ic_x)).into(item5_);
+                                item5_.setVisibility(View.VISIBLE);
+                                itm5 = true;
+                            }
+                            if (part.getItm5().equals("o")) {
+                                Glide.with(PlayActivity.this).load(getResources().getDrawable(R.drawable.ic_o)).into(item5_);
+                                item5_.setVisibility(View.VISIBLE);
+                                itm5_ = true;
+                            }
+                            if (part.getItm6().equals("x")) {
+                                Glide.with(PlayActivity.this).load(getResources().getDrawable(R.drawable.ic_x)).into(item6_);
+                                item6_.setVisibility(View.VISIBLE);
+                                itm6 = true;
+                            }
+                            if (part.getItm6().equals("o")) {
+                                Glide.with(PlayActivity.this).load(getResources().getDrawable(R.drawable.ic_o)).into(item6_);
+                                item6_.setVisibility(View.VISIBLE);
+                                itm6_ = true;
+                            }
+                            if (part.getItm7().equals("x")) {
+                                Glide.with(PlayActivity.this).load(getResources().getDrawable(R.drawable.ic_x)).into(item7_);
+                                item7_.setVisibility(View.VISIBLE);
+                                itm7 = true;
+                            }
+                            if (part.getItm7().equals("o")) {
+                                Glide.with(PlayActivity.this).load(getResources().getDrawable(R.drawable.ic_o)).into(item7_);
+                                item7_.setVisibility(View.VISIBLE);
+                                itm7_ = true;
+                            }
+                            if (part.getItm8().equals("x")) {
+                                Glide.with(PlayActivity.this).load(getResources().getDrawable(R.drawable.ic_x)).into(item8_);
+                                item8_.setVisibility(View.VISIBLE);
+                                itm8 = true;
+                            }
+                            if (part.getItm8().equals("o")) {
+                                Glide.with(PlayActivity.this).load(getResources().getDrawable(R.drawable.ic_o)).into(item8_);
+                                item8_.setVisibility(View.VISIBLE);
+                                itm8_ = true;
+                            }
+
+                            if (part.getItm9().equals("x")) {
+                                Glide.with(PlayActivity.this).load(getResources().getDrawable(R.drawable.ic_x)).into(item9_);
+                                item9_.setVisibility(View.VISIBLE);
+                                itm9 = true;
+                            }
+                            if (part.getItm9().equals("o")) {
+                                Glide.with(PlayActivity.this).load(getResources().getDrawable(R.drawable.ic_o)).into(item9_);
+                                item9_.setVisibility(View.VISIBLE);
+                                itm9_ = true;
+                            }
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
+            reference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                         Parties parties = dataSnapshot.getValue(Parties.class);
-                        if (parties.getPlayer1().equals(player1) && parties.getPlayer2().equals(player2) &&
-                                parties.getTurn().equals(false) && parties.getPlay().equals("true")){
+                        if (parties.getPlayer1().equals(player1) && parties.getPlayer2().equals(player2)
+                                && parties.getPlay().equals("true")) {
 
-                            circle_player_1.setVisibility(View.VISIBLE);
-                            circle_player_2.setVisibility(View.GONE);
-                            XFriendPlay_(getResources().getDrawable(R.drawable.ic_x), dataSnapshot, parties.getTurn()
-                                    , parties.getItm1(),parties.getItm2(),parties.getItm3(),parties.getItm4(),parties.getItm5(),parties.getItm6(),parties.getItm7(),parties.getItm8(),parties.getItm9()
-                                    , parties.getItm1_(),parties.getItm2_(),parties.getItm3_(),parties.getItm4_(),parties.getItm5_(),parties.getItm6_(),parties.getItm7_(),parties.getItm8_(),parties.getItm9_());
+                            if (parties.getTurn().equals(false)){
+                                circle_player_1.setVisibility(View.VISIBLE);
+                                circle_player_2.setVisibility(View.GONE);
+                                XFriendPlay_(dataSnapshot,parties.getTurn());
 
-                        }else if (parties.getPlayer1().equals(player1) && parties.getPlayer2().equals(player2) &&
-                                parties.getTurn().equals(true) && parties.getPlay().equals("true")){
-
-                            circle_player_2.setVisibility(View.VISIBLE);
-                            circle_player_1.setVisibility(View.GONE);
-                            OFriendPlay_(getResources().getDrawable(R.drawable.ic_o), dataSnapshot, parties.getTurn()
-                                    , parties.getItm1(),parties.getItm2(),parties.getItm3(),parties.getItm4(),parties.getItm5(),parties.getItm6(),parties.getItm7(),parties.getItm8(),parties.getItm9()
-                                    , parties.getItm1_(),parties.getItm2_(),parties.getItm3_(),parties.getItm4_(),parties.getItm5_(),parties.getItm6_(),parties.getItm7_(),parties.getItm8_(),parties.getItm9_());
-
+                            }else {
+                                circle_player_2.setVisibility(View.VISIBLE);
+                                circle_player_1.setVisibility(View.GONE);
+                                OFriendPlay_(dataSnapshot,parties.getTurn());
+                            }
 
                         }
                     }
@@ -182,8 +290,43 @@ public class PlayActivity extends AppCompatActivity {
 
                 }
             });
+            /*reference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                        Parties parties = dataSnapshot.getValue(Parties.class);
+                        if (parties.getPlayer1().equals(player1) && parties.getPlayer2().equals(player2) &&
+                                parties.getTurn().equals(false) && parties.getPlay().equals("true")) {
+
+                            circle_player_1.setVisibility(View.VISIBLE);
+                            circle_player_2.setVisibility(View.GONE);
+                            XFriendPlay_(getResources().getDrawable(R.drawable.ic_x), dataSnapshot, parties.getTurn()
+                                    , parties.getItm1(), parties.getItm2(), parties.getItm3(), parties.getItm4(), parties.getItm5(), parties.getItm6(), parties.getItm7(), parties.getItm8(), parties.getItm9()
+                                    , parties.getItm1_(), parties.getItm2_(), parties.getItm3_(), parties.getItm4_(), parties.getItm5_(), parties.getItm6_(), parties.getItm7_(), parties.getItm8_(), parties.getItm9_());
+
+                        } else if (parties.getPlayer1().equals(player1) && parties.getPlayer2().equals(player2) &&
+                                parties.getTurn().equals(true) && parties.getPlay().equals("true")) {
+
+                            circle_player_2.setVisibility(View.VISIBLE);
+                            circle_player_1.setVisibility(View.GONE);
+                            OFriendPlay_(getResources().getDrawable(R.drawable.ic_o), dataSnapshot, parties.getTurn()
+                                    , parties.getItm1(), parties.getItm2(), parties.getItm3(), parties.getItm4(), parties.getItm5(), parties.getItm6(), parties.getItm7(), parties.getItm8(), parties.getItm9()
+                                    , parties.getItm1_(), parties.getItm2_(), parties.getItm3_(), parties.getItm4_(), parties.getItm5_(), parties.getItm6_(), parties.getItm7_(), parties.getItm8_(), parties.getItm9_());
+
+
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });*/
         }
     }
+
+
 
     private void XAiPlay(Drawable drawable) {
         Drawable drawable_ = getResources().getDrawable(R.drawable.ic_o);
@@ -269,7 +412,6 @@ public class PlayActivity extends AppCompatActivity {
             }
         });
     }
-
     private void OAiPlay(Drawable drawable) {
         //-----!
         /*        AIFunction(   v, v, v
@@ -286,30 +428,30 @@ public class PlayActivity extends AppCompatActivity {
         boolean O = true;
         boolean v = false;
         //-------------------
-        AIFunction(   X, v, v
-                    , v, v, v
-                    , v, v, v
-                    , drawable
-                    , v, v, v
-                    , v, v, v
-                    , v, v, v
-                    , item6_, itm6_);
-        AIFunction(   X, X, v
-                    , v, v, v
-                    , v, v, v
-                    , drawable
-                    , v, v, v
-                    , v, v, O
-                    , v, v, v
-                    , item9_, itm9_);
-        AIFunction(   X, X, v
-                    , v, X, v
-                    , v, v, v
-                    , drawable
-                    , v, v, v
-                    , v, v, O
-                    , v, v, O
-                    , item7_, itm7_);
+        AIFunction(X, v, v
+                , v, v, v
+                , v, v, v
+                , drawable
+                , v, v, v
+                , v, v, v
+                , v, v, v
+                , item6_, itm6_);
+        AIFunction(X, X, v
+                , v, v, v
+                , v, v, v
+                , drawable
+                , v, v, v
+                , v, v, O
+                , v, v, v
+                , item9_, itm9_);
+        AIFunction(X, X, v
+                , v, X, v
+                , v, v, v
+                , drawable
+                , v, v, v
+                , v, v, O
+                , v, v, O
+                , item7_, itm7_);
 
         Random random = new Random();
 
@@ -420,7 +562,6 @@ public class PlayActivity extends AppCompatActivity {
             }
         });
     }
-
     private void Oplay_(Drawable drawable) {
         item1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -496,227 +637,138 @@ public class PlayActivity extends AppCompatActivity {
         });
     }
 
-    private void XFriendPlay_(Drawable drawable, DataSnapshot dataSnapshot, Boolean turn, Boolean itm1, Boolean itm2, Boolean itm3, Boolean itm4, Boolean itm5, Boolean itm6, Boolean itm7, Boolean itm8, Boolean itm9, Boolean itm1_, Boolean itm2_, Boolean itm3_, Boolean itm4_, Boolean itm5_, Boolean itm6_, Boolean itm7_, Boolean itm8_, Boolean itm9_) {
+    private void XFriendPlay_(DataSnapshot dataSnapshot, Boolean turn) {
         item1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                putItemPlayWithFriend(item1_, drawable, turn);
+                putItemPlayWithFriend(dataSnapshot,item1_, turn, "itm1", "x");
+                checkForWinnerOnline(dataSnapshot, turn.toString());
 
-                HashMap<String, Object> hashMap = new HashMap<>();
-                hashMap.put("itm1", true);
-                dataSnapshot.getRef().updateChildren(hashMap);
-
-                checkForWinnerOnline(dataSnapshot,turn,itm1,itm2,itm3,itm4,itm5,itm6,itm7,itm8,itm9,itm1_,itm2_,itm3_,itm4_,itm5_,itm6_,itm7_,itm8_,itm9_);
             }
         });
         item2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                putItemPlayWithFriend(item2_, drawable, turn);
-
-                HashMap<String, Object> hashMap = new HashMap<>();
-                hashMap.put("itm2", true);
-                dataSnapshot.getRef().updateChildren(hashMap);
-
-                checkForWinnerOnline(dataSnapshot,turn,itm1,itm2,itm3,itm4,itm5,itm6,itm7,itm8,itm9,itm1_,itm2_,itm3_,itm4_,itm5_,itm6_,itm7_,itm8_,itm9_);
+                putItemPlayWithFriend(dataSnapshot,item2_, turn, "itm2", "x");
+                checkForWinnerOnline(dataSnapshot, turn.toString());
             }
         });
         item3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                putItemPlayWithFriend(item3_, drawable, turn);
-
-                HashMap<String, Object> hashMap = new HashMap<>();
-                hashMap.put("itm3", true);
-                dataSnapshot.getRef().updateChildren(hashMap);
-
-                checkForWinnerOnline(dataSnapshot,turn,itm1,itm2,itm3,itm4,itm5,itm6,itm7,itm8,itm9,itm1_,itm2_,itm3_,itm4_,itm5_,itm6_,itm7_,itm8_,itm9_);
+                putItemPlayWithFriend(dataSnapshot,item3_, turn, "itm3", "x");
+                checkForWinnerOnline(dataSnapshot, turn.toString());
             }
         });
         item4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                putItemPlayWithFriend(item4_, drawable, turn);
-
-                HashMap<String, Object> hashMap = new HashMap<>();
-                hashMap.put("itm4", true);
-                dataSnapshot.getRef().updateChildren(hashMap);
-
-                checkForWinnerOnline(dataSnapshot,turn,itm1,itm2,itm3,itm4,itm5,itm6,itm7,itm8,itm9,itm1_,itm2_,itm3_,itm4_,itm5_,itm6_,itm7_,itm8_,itm9_);
+                putItemPlayWithFriend(dataSnapshot,item4_, turn, "itm4", "x");
+                checkForWinnerOnline(dataSnapshot, turn.toString());
             }
         });
         item5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                putItemPlayWithFriend(item5_, drawable, turn);
-
-                HashMap<String, Object> hashMap = new HashMap<>();
-                hashMap.put("itm5", true);
-                dataSnapshot.getRef().updateChildren(hashMap);
-
-                checkForWinnerOnline(dataSnapshot,turn,itm1,itm2,itm3,itm4,itm5,itm6,itm7,itm8,itm9,itm1_,itm2_,itm3_,itm4_,itm5_,itm6_,itm7_,itm8_,itm9_);
+                putItemPlayWithFriend(dataSnapshot,item5_, turn, "itm5", "x");
+                checkForWinnerOnline(dataSnapshot, turn.toString());
             }
         });
         item6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                putItemPlayWithFriend(item6_, drawable, turn);
-
-                HashMap<String, Object> hashMap = new HashMap<>();
-                hashMap.put("itm6", true);
-                dataSnapshot.getRef().updateChildren(hashMap);
-
-                checkForWinnerOnline(dataSnapshot,turn,itm1,itm2,itm3,itm4,itm5,itm6,itm7,itm8,itm9,itm1_,itm2_,itm3_,itm4_,itm5_,itm6_,itm7_,itm8_,itm9_);
+                putItemPlayWithFriend(dataSnapshot,item6_, turn, "itm6", "x");
+                checkForWinnerOnline(dataSnapshot, turn.toString());
             }
         });
         item7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                putItemPlayWithFriend(item7_, drawable, turn);
-
-                HashMap<String, Object> hashMap = new HashMap<>();
-                hashMap.put("itm7", true);
-                dataSnapshot.getRef().updateChildren(hashMap);
-
-                checkForWinnerOnline(dataSnapshot,turn,itm1,itm2,itm3,itm4,itm5,itm6,itm7,itm8,itm9,itm1_,itm2_,itm3_,itm4_,itm5_,itm6_,itm7_,itm8_,itm9_);
+                putItemPlayWithFriend(dataSnapshot,item7_, turn, "itm7", "x");
+                checkForWinnerOnline(dataSnapshot, turn.toString());
             }
         });
         item8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                putItemPlayWithFriend(item8_, drawable, turn);
-
-                HashMap<String, Object> hashMap = new HashMap<>();
-                hashMap.put("itm8", true);
-                dataSnapshot.getRef().updateChildren(hashMap);
-
-                checkForWinnerOnline(dataSnapshot,turn,itm1,itm2,itm3,itm4,itm5,itm6,itm7,itm8,itm9,itm1_,itm2_,itm3_,itm4_,itm5_,itm6_,itm7_,itm8_,itm9_);
+                putItemPlayWithFriend(dataSnapshot,item8_, turn, "itm8", "x");
+                checkForWinnerOnline(dataSnapshot, turn.toString());
             }
         });
         item9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                putItemPlayWithFriend(item9_, drawable, turn);
-
-                HashMap<String, Object> hashMap = new HashMap<>();
-                hashMap.put("itm9", true);
-                dataSnapshot.getRef().updateChildren(hashMap);
-
-                checkForWinnerOnline(dataSnapshot,turn,itm1,itm2,itm3,itm4,itm5,itm6,itm7,itm8,itm9,itm1_,itm2_,itm3_,itm4_,itm5_,itm6_,itm7_,itm8_,itm9_);
+                putItemPlayWithFriend(dataSnapshot,item9_, turn, "itm9", "x");
+                checkForWinnerOnline(dataSnapshot, turn.toString());
             }
         });
     }
-
-    private void OFriendPlay_(Drawable drawable, DataSnapshot dataSnapshot, Boolean turn, Boolean itm1, Boolean itm2, Boolean itm3, Boolean itm4, Boolean itm5, Boolean itm6, Boolean itm7, Boolean itm8, Boolean itm9, Boolean itm1_, Boolean itm2_, Boolean itm3_, Boolean itm4_, Boolean itm5_, Boolean itm6_, Boolean itm7_, Boolean itm8_, Boolean itm9_) {
+    private void OFriendPlay_(DataSnapshot dataSnapshot, Boolean turn) {
         item1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                putItemPlayWithFriend(item1_, drawable, turn);
-
-                HashMap<String, Object> hashMap = new HashMap<>();
-                hashMap.put("itm1_", true);
-                dataSnapshot.getRef().updateChildren(hashMap);
-
-                checkForWinnerOnline(dataSnapshot,turn,itm1,itm2,itm3,itm4,itm5,itm6,itm7,itm8,itm9,itm1_,itm2_,itm3_,itm4_,itm5_,itm6_,itm7_,itm8_,itm9_);
+                putItemPlayWithFriend(dataSnapshot,item1_, turn, "itm1", "o");
+                checkForWinnerOnline(dataSnapshot, turn.toString());
             }
         });
         item2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                putItemPlayWithFriend(item2_, drawable, turn);
-
-                HashMap<String, Object> hashMap = new HashMap<>();
-                hashMap.put("itm2_", true);
-                dataSnapshot.getRef().updateChildren(hashMap);
-
-                checkForWinnerOnline(dataSnapshot,turn,itm1,itm2,itm3,itm4,itm5,itm6,itm7,itm8,itm9,itm1_,itm2_,itm3_,itm4_,itm5_,itm6_,itm7_,itm8_,itm9_);
+                putItemPlayWithFriend(dataSnapshot,item2_, turn, "itm2", "o");
+                checkForWinnerOnline(dataSnapshot, turn.toString());
             }
         });
         item3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                putItemPlayWithFriend(item3_, drawable, turn);
-
-                HashMap<String, Object> hashMap = new HashMap<>();
-                hashMap.put("itm3_", true);
-                dataSnapshot.getRef().updateChildren(hashMap);
-
-                checkForWinnerOnline(dataSnapshot,turn,itm1,itm2,itm3,itm4,itm5,itm6,itm7,itm8,itm9,itm1_,itm2_,itm3_,itm4_,itm5_,itm6_,itm7_,itm8_,itm9_);
+                putItemPlayWithFriend(dataSnapshot,item3_, turn, "itm3", "o");
+                checkForWinnerOnline(dataSnapshot, turn.toString());
             }
         });
         item4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                putItemPlayWithFriend(item4_, drawable, turn);
-
-                HashMap<String, Object> hashMap = new HashMap<>();
-                hashMap.put("itm4_", true);
-                dataSnapshot.getRef().updateChildren(hashMap);
-
-                checkForWinnerOnline(dataSnapshot,turn,itm1,itm2,itm3,itm4,itm5,itm6,itm7,itm8,itm9,itm1_,itm2_,itm3_,itm4_,itm5_,itm6_,itm7_,itm8_,itm9_);
+                putItemPlayWithFriend(dataSnapshot,item4_, turn, "itm4", "o");
+                checkForWinnerOnline(dataSnapshot, turn.toString());
             }
         });
         item5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                putItemPlayWithFriend(item5_, drawable, turn);
-
-                HashMap<String, Object> hashMap = new HashMap<>();
-                hashMap.put("itm5_", true);
-                dataSnapshot.getRef().updateChildren(hashMap);
-
-                checkForWinnerOnline(dataSnapshot,turn,itm1,itm2,itm3,itm4,itm5,itm6,itm7,itm8,itm9,itm1_,itm2_,itm3_,itm4_,itm5_,itm6_,itm7_,itm8_,itm9_);
+                putItemPlayWithFriend(dataSnapshot,item5_, turn, "itm5", "o");
+                checkForWinnerOnline(dataSnapshot, turn.toString());
             }
         });
         item6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                putItemPlayWithFriend(item6_, drawable, turn);
-
-                HashMap<String, Object> hashMap = new HashMap<>();
-                hashMap.put("itm6_", true);
-                dataSnapshot.getRef().updateChildren(hashMap);
-
-                checkForWinnerOnline(dataSnapshot,turn,itm1,itm2,itm3,itm4,itm5,itm6,itm7,itm8,itm9,itm1_,itm2_,itm3_,itm4_,itm5_,itm6_,itm7_,itm8_,itm9_);
+                putItemPlayWithFriend(dataSnapshot,item6_, turn, "itm6", "o");
+                checkForWinnerOnline(dataSnapshot, turn.toString());
             }
         });
         item7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                putItemPlayWithFriend(item7_, drawable, turn);
-
-                HashMap<String, Object> hashMap = new HashMap<>();
-                hashMap.put("itm7_", true);
-                dataSnapshot.getRef().updateChildren(hashMap);
-
-                checkForWinnerOnline(dataSnapshot,turn,itm1,itm2,itm3,itm4,itm5,itm6,itm7,itm8,itm9,itm1_,itm2_,itm3_,itm4_,itm5_,itm6_,itm7_,itm8_,itm9_);
+                putItemPlayWithFriend(dataSnapshot,item7_, turn, "itm7", "o");
+                checkForWinnerOnline(dataSnapshot, turn.toString());
             }
         });
         item8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                putItemPlayWithFriend(item8_, drawable, turn);
-
-                HashMap<String, Object> hashMap = new HashMap<>();
-                hashMap.put("itm8_", true);
-                dataSnapshot.getRef().updateChildren(hashMap);
-
-                checkForWinnerOnline(dataSnapshot,turn,itm1,itm2,itm3,itm4,itm5,itm6,itm7,itm8,itm9,itm1_,itm2_,itm3_,itm4_,itm5_,itm6_,itm7_,itm8_,itm9_);
+                putItemPlayWithFriend(dataSnapshot,item8_, turn, "itm8", "o");
+                checkForWinnerOnline(dataSnapshot, turn.toString());
             }
         });
         item9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                putItemPlayWithFriend(item9_, drawable, turn);
-
-                HashMap<String, Object> hashMap = new HashMap<>();
-                hashMap.put("itm9_", true);
-                dataSnapshot.getRef().updateChildren(hashMap);
-
-                checkForWinnerOnline(dataSnapshot,turn,itm1,itm2,itm3,itm4,itm5,itm6,itm7,itm8,itm9,itm1_,itm2_,itm3_,itm4_,itm5_,itm6_,itm7_,itm8_,itm9_);
+                putItemPlayWithFriend(dataSnapshot,item9_, turn, "itm9", "o");
+                checkForWinnerOnline(dataSnapshot, turn.toString());
             }
         });
     }
+
 
     private void putItemPlayWithAi(ImageView item, Drawable drawable) {
         if (item.getVisibility() == View.GONE) {
@@ -730,7 +782,6 @@ public class PlayActivity extends AppCompatActivity {
 
         }
     }
-
     private void putItemPlay(ImageView item, Drawable drawable) {
         if (item.getVisibility() == View.GONE) {
             Glide.with(PlayActivity.this).load(drawable).into(item);
@@ -744,18 +795,19 @@ public class PlayActivity extends AppCompatActivity {
 
         }
     }
-
-    private void putItemPlayWithFriend(ImageView item, Drawable drawable, Boolean turn) {
+    private void putItemPlayWithFriend(DataSnapshot dataSnapshot, ImageView item, Boolean turn, String itm, String s) {
         if (item.getVisibility() == View.GONE) {
-            Glide.with(PlayActivity.this).load(drawable).into(item);
-            item.setVisibility(View.VISIBLE);
-            //passer a l'autre player
 
-            turn = !turn;
+            HashMap<String, Object> hashMap = new HashMap<>();
+
+            hashMap.put(itm,s);
+            hashMap.put("turn",!turn);
+
+            dataSnapshot.getRef().updateChildren(hashMap);
+
             play();
         } else {
             //Toast.makeText(PlayActivity.this, "is visible", Toast.LENGTH_SHORT).show();
-
         }
     }
 
@@ -853,6 +905,100 @@ public class PlayActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+    private void checkForWinnerOnline(DataSnapshot dataSnapshot, String turn) {
+        //if X player win
+        try {
+
+            if (itm1.equals(itm2) && itm1.equals(itm3) && itm1.equals(true)) {
+                win_horizontal_1.setVisibility(View.VISIBLE);
+                ResetGameOnline(dataSnapshot, String.valueOf(turn));
+            }
+            if (itm4.equals(itm5) && itm4.equals(itm6) && itm4.equals(true)) {
+                win_horizontal_2.setVisibility(View.VISIBLE);
+                ResetGameOnline(dataSnapshot, String.valueOf(turn));
+            }
+            if (itm7.equals(itm8) && itm7.equals(itm9) && itm7.equals(true)) {
+                win_horizontal_3.setVisibility(View.VISIBLE);
+                ResetGameOnline(dataSnapshot, String.valueOf(turn));
+            }
+            if (itm1.equals(itm4) && itm1.equals(itm7) && itm1.equals(true)) {
+                win_vertical_1.setVisibility(View.VISIBLE);
+                ResetGameOnline(dataSnapshot, String.valueOf(turn));
+            }
+            if (itm2.equals(itm5) && itm2.equals(itm8) && itm2.equals(true)) {
+                win_vertical_2.setVisibility(View.VISIBLE);
+                ResetGameOnline(dataSnapshot, String.valueOf(turn));
+            }
+            if (itm3.equals(itm6) && itm3.equals(itm9) && itm3.equals(true)) {
+                win_vertical_3.setVisibility(View.VISIBLE);
+                ResetGameOnline(dataSnapshot, String.valueOf(turn));
+            }
+            if (itm1.equals(itm5) && itm1.equals(itm9) && itm1.equals(true)) {
+                win_diagonal_1.setVisibility(View.VISIBLE);
+                ResetGameOnline(dataSnapshot, String.valueOf(turn));
+            }
+            if (itm3.equals(itm5) && itm3.equals(itm7) && itm3.equals(true)) {
+                win_diagonal_2.setVisibility(View.VISIBLE);
+                ResetGameOnline(dataSnapshot, String.valueOf(turn));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //if O player win
+        try {
+
+            if (itm1_.equals(itm2_) && itm1_.equals(itm3_) && itm1_.equals(true)) {
+                win_horizontal_1.setVisibility(View.VISIBLE);
+                ResetGameOnline(dataSnapshot, String.valueOf(turn));
+            }
+            if (itm4_.equals(itm5_) && itm4_.equals(itm6_) && itm4_.equals(true)) {
+                win_horizontal_2.setVisibility(View.VISIBLE);
+                ResetGameOnline(dataSnapshot, String.valueOf(turn));
+            }
+            if (itm7_.equals(itm8_) && itm7_.equals(itm9_) && itm7_.equals(true)) {
+                win_horizontal_3.setVisibility(View.VISIBLE);
+                ResetGameOnline(dataSnapshot, String.valueOf(turn));
+            }
+            if (itm1_.equals(itm4_) && itm1_.equals(itm7_) && itm1_.equals(true)) {
+                win_vertical_1.setVisibility(View.VISIBLE);
+                ResetGameOnline(dataSnapshot, String.valueOf(turn));
+            }
+            if (itm2_.equals(itm5_) && itm2_.equals(itm8_) && itm2_.equals(true)) {
+                win_vertical_2.setVisibility(View.VISIBLE);
+                ResetGameOnline(dataSnapshot, String.valueOf(turn));
+            }
+            if (itm3_.equals(itm6_) && itm3_.equals(itm9_) && itm3_.equals(true)) {
+                win_vertical_3.setVisibility(View.VISIBLE);
+                ResetGameOnline(dataSnapshot, String.valueOf(turn));
+            }
+            if (itm1_.equals(itm5_) && itm1_.equals(itm9_) && itm1_.equals(true)) {
+                win_diagonal_1.setVisibility(View.VISIBLE);
+                ResetGameOnline(dataSnapshot, String.valueOf(turn));
+            }
+            if (itm3_.equals(itm5_) && itm3_.equals(itm7_) && itm3_.equals(true)) {
+                win_diagonal_2.setVisibility(View.VISIBLE);
+                ResetGameOnline(dataSnapshot, String.valueOf(turn));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //if draw no win
+        try {
+            if (win_vertical_1.getVisibility() == View.GONE && win_vertical_2.getVisibility() == View.GONE && win_vertical_3.getVisibility() == View.GONE &&
+                    win_horizontal_1.getVisibility() == View.GONE && win_horizontal_2.getVisibility() == View.GONE && win_horizontal_3.getVisibility() == View.GONE &&
+                    win_diagonal_1.getVisibility() == View.GONE && win_diagonal_2.getVisibility() == View.GONE
+                    &&
+                    item1_.getVisibility() == View.VISIBLE && item2_.getVisibility() == View.VISIBLE && item3_.getVisibility() == View.VISIBLE &&
+                    item4_.getVisibility() == View.VISIBLE && item5_.getVisibility() == View.VISIBLE && item6_.getVisibility() == View.VISIBLE &&
+                    item7_.getVisibility() == View.VISIBLE && item8_.getVisibility() == View.VISIBLE && item9_.getVisibility() == View.VISIBLE
+            ) {
+                Toast.makeText(PlayActivity.this, "Draw", Toast.LENGTH_SHORT).show();
+                ResetGameOnline(dataSnapshot, "");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     private void ResetGame(String turn) {
         if (turn.equals("false")) {
@@ -860,6 +1006,60 @@ public class PlayActivity extends AppCompatActivity {
         } else if (turn.equals("true")) {
             nbr_win_p1.setText(String.valueOf(Integer.parseInt(nbr_win_p1.getText().toString()) + 1));
         }
+        restItems();
+    }
+    private void ResetGameOnline(DataSnapshot dataSnapshot, String turn) {
+        if (turn.equals("false")) {
+            nbr_win_p2.setText(String.valueOf(Integer.parseInt(nbr_win_p2.getText().toString()) + 1));
+
+            //start New Parties in Firebase
+            newGame(false);
+
+            dataSnapshot.getRef().removeValue();
+            restItems();
+        } else if (turn.equals("true")) {
+            nbr_win_p1.setText(String.valueOf(Integer.parseInt(nbr_win_p1.getText().toString()) + 1));
+
+            //start New Parties in Firebase
+            newGame(false);
+
+            dataSnapshot.getRef().removeValue();
+            restItems();
+        } else if (turn.equals("")) {
+            nbr_win_p1.setText(String.valueOf(Integer.parseInt(nbr_win_p1.getText().toString()) + 1));
+
+            //start New Parties in Firebase
+            newGame(false);
+
+            dataSnapshot.getRef().removeValue();
+            restItems();
+        }
+    }
+
+    private void newGame(boolean b) {
+        DatabaseReference r1 = FirebaseDatabase.getInstance().getReference("Parties");
+        HashMap<String, Object> hashMap1 = new HashMap<>();
+
+        hashMap1.put("player1",getIntent().getStringExtra("id"));
+        hashMap1.put("player2",getIntent().getStringExtra("FriendId"));
+        hashMap1.put("play","true");
+        hashMap1.put("turn",b);
+
+        hashMap1.put("itm1","false");
+        hashMap1.put("itm2","false");
+        hashMap1.put("itm3","false");
+        hashMap1.put("itm4","false");
+        hashMap1.put("itm5","false");
+        hashMap1.put("itm6","false");
+        hashMap1.put("itm7","false");
+        hashMap1.put("itm8","false");
+        hashMap1.put("itm9","false");
+
+        r1.push().setValue(hashMap1);
+
+    }
+
+    private void restItems() {
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             public void run() {
@@ -883,162 +1083,6 @@ public class PlayActivity extends AppCompatActivity {
 
                 itm1 = itm2 = itm3 = itm4 = itm5 = itm6 = itm7 = itm8 = itm9 = false;
                 itm1_ = itm2_ = itm3_ = itm4_ = itm5_ = itm6_ = itm7_ = itm8_ = itm9_ = false;
-            }
-        }, 2000);
-    }
-
-    private void checkForWinnerOnline(DataSnapshot dataSnapshot, Boolean turn, Boolean itm1, Boolean itm2, Boolean itm3, Boolean itm4, Boolean itm5, Boolean itm6, Boolean itm7, Boolean itm8, Boolean itm9, Boolean itm1_, Boolean itm2_, Boolean itm3_, Boolean itm4_, Boolean itm5_, Boolean itm6_, Boolean itm7_, Boolean itm8_, Boolean itm9_) {
-        //if X player win
-        try {
-
-            if (itm1.equals(itm2) && itm1.equals(itm3) && itm1.equals(true)) {
-                win_horizontal_1.setVisibility(View.VISIBLE);
-                ResetGameOnline(dataSnapshot,String.valueOf(turn));
-            }
-            if (itm4.equals(itm5) && itm4.equals(itm6) && itm4.equals(true)) {
-                win_horizontal_2.setVisibility(View.VISIBLE);
-                ResetGameOnline(dataSnapshot,String.valueOf(turn));
-            }
-            if (itm7.equals(itm8) && itm7.equals(itm9) && itm7.equals(true)) {
-                win_horizontal_3.setVisibility(View.VISIBLE);
-                ResetGameOnline(dataSnapshot,String.valueOf(turn));
-            }
-            if (itm1.equals(itm4) && itm1.equals(itm7) && itm1.equals(true)) {
-                win_vertical_1.setVisibility(View.VISIBLE);
-                ResetGameOnline(dataSnapshot,String.valueOf(turn));
-            }
-            if (itm2.equals(itm5) && itm2.equals(itm8) && itm2.equals(true)) {
-                win_vertical_2.setVisibility(View.VISIBLE);
-                ResetGameOnline(dataSnapshot,String.valueOf(turn));
-            }
-            if (itm3.equals(itm6) && itm3.equals(itm9) && itm3.equals(true)) {
-                win_vertical_3.setVisibility(View.VISIBLE);
-                ResetGameOnline(dataSnapshot,String.valueOf(turn));
-            }
-            if (itm1.equals(itm5) && itm1.equals(itm9) && itm1.equals(true)) {
-                win_diagonal_1.setVisibility(View.VISIBLE);
-                ResetGameOnline(dataSnapshot,String.valueOf(turn));
-            }
-            if (itm3.equals(itm5) && itm3.equals(itm7) && itm3.equals(true)) {
-                win_diagonal_2.setVisibility(View.VISIBLE);
-                ResetGameOnline(dataSnapshot,String.valueOf(turn));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        //if O player win
-        try {
-
-            if (itm1_.equals(itm2_) && itm1_.equals(itm3_) && itm1_.equals(true)) {
-                win_horizontal_1.setVisibility(View.VISIBLE);
-                ResetGameOnline(dataSnapshot,String.valueOf(turn));
-            }
-            if (itm4_.equals(itm5_) && itm4_.equals(itm6_) && itm4_.equals(true)) {
-                win_horizontal_2.setVisibility(View.VISIBLE);
-                ResetGameOnline(dataSnapshot,String.valueOf(turn));
-            }
-            if (itm7_.equals(itm8_) && itm7_.equals(itm9_) && itm7_.equals(true)) {
-                win_horizontal_3.setVisibility(View.VISIBLE);
-                ResetGameOnline(dataSnapshot,String.valueOf(turn));
-            }
-            if (itm1_.equals(itm4_) && itm1_.equals(itm7_) && itm1_.equals(true)) {
-                win_vertical_1.setVisibility(View.VISIBLE);
-                ResetGameOnline(dataSnapshot,String.valueOf(turn));
-            }
-            if (itm2_.equals(itm5_) && itm2_.equals(itm8_) && itm2_.equals(true)) {
-                win_vertical_2.setVisibility(View.VISIBLE);
-                ResetGameOnline(dataSnapshot,String.valueOf(turn));
-            }
-            if (itm3_.equals(itm6_) && itm3_.equals(itm9_) && itm3_.equals(true)) {
-                win_vertical_3.setVisibility(View.VISIBLE);
-                ResetGameOnline(dataSnapshot,String.valueOf(turn));
-            }
-            if (itm1_.equals(itm5_) && itm1_.equals(itm9_) && itm1_.equals(true)) {
-                win_diagonal_1.setVisibility(View.VISIBLE);
-                ResetGameOnline(dataSnapshot,String.valueOf(turn));
-            }
-            if (itm3_.equals(itm5_) && itm3_.equals(itm7_) && itm3_.equals(true)) {
-                win_diagonal_2.setVisibility(View.VISIBLE);
-                ResetGameOnline(dataSnapshot,String.valueOf(turn));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        //if draw no win
-        try {
-            if (win_vertical_1.getVisibility() == View.GONE && win_vertical_2.getVisibility() == View.GONE && win_vertical_3.getVisibility() == View.GONE &&
-                    win_horizontal_1.getVisibility() == View.GONE && win_horizontal_2.getVisibility() == View.GONE && win_horizontal_3.getVisibility() == View.GONE &&
-                    win_diagonal_1.getVisibility() == View.GONE && win_diagonal_2.getVisibility() == View.GONE
-                    &&
-                    item1_.getVisibility() == View.VISIBLE && item2_.getVisibility() == View.VISIBLE && item3_.getVisibility() == View.VISIBLE &&
-                    item4_.getVisibility() == View.VISIBLE && item5_.getVisibility() == View.VISIBLE && item6_.getVisibility() == View.VISIBLE &&
-                    item7_.getVisibility() == View.VISIBLE && item8_.getVisibility() == View.VISIBLE && item9_.getVisibility() == View.VISIBLE
-            ) {
-                Toast.makeText(PlayActivity.this, "Draw", Toast.LENGTH_SHORT).show();
-                ResetGameOnline(dataSnapshot,"");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void ResetGameOnline(DataSnapshot dataSnapshot, String turn) {
-        if (turn.equals("false")) {
-            nbr_win_p2.setText(String.valueOf(Integer.parseInt(nbr_win_p2.getText().toString()) + 1));
-        } else if (turn.equals("true")) {
-            nbr_win_p1.setText(String.valueOf(Integer.parseInt(nbr_win_p1.getText().toString()) + 1));
-        }else if (turn.equals("")){
-            turn = String.valueOf(true);
-        }
-        Handler handler = new Handler();
-        String finalTurn = turn;
-        handler.postDelayed(new Runnable() {
-            public void run() {
-                item1_.setVisibility(View.GONE);
-                item2_.setVisibility(View.GONE);
-                item3_.setVisibility(View.GONE);
-                item4_.setVisibility(View.GONE);
-                item5_.setVisibility(View.GONE);
-                item6_.setVisibility(View.GONE);
-                item7_.setVisibility(View.GONE);
-                item8_.setVisibility(View.GONE);
-                item9_.setVisibility(View.GONE);
-                win_vertical_1.setVisibility(View.GONE);
-                win_vertical_2.setVisibility(View.GONE);
-                win_vertical_3.setVisibility(View.GONE);
-                win_horizontal_1.setVisibility(View.GONE);
-                win_horizontal_2.setVisibility(View.GONE);
-                win_horizontal_3.setVisibility(View.GONE);
-                win_diagonal_1.setVisibility(View.GONE);
-                win_diagonal_2.setVisibility(View.GONE);
-
-
-                HashMap<String, Object> objectHashMap = new HashMap<>();
-
-                objectHashMap.put("play","true");
-                objectHashMap.put("turn", finalTurn);
-
-                objectHashMap.put("itm1",false);
-                objectHashMap.put("itm2",false);
-                objectHashMap.put("itm3",false);
-                objectHashMap.put("itm4",false);
-                objectHashMap.put("itm5",false);
-                objectHashMap.put("itm6",false);
-                objectHashMap.put("itm7",false);
-                objectHashMap.put("itm8",false);
-                objectHashMap.put("itm9",false);
-
-                objectHashMap.put("itm1_",false);
-                objectHashMap.put("itm2_",false);
-                objectHashMap.put("itm3_",false);
-                objectHashMap.put("itm4_",false);
-                objectHashMap.put("itm5_",false);
-                objectHashMap.put("itm6_",false);
-                objectHashMap.put("itm7_",false);
-                objectHashMap.put("itm8_",false);
-                objectHashMap.put("itm9_",false);
-
-                dataSnapshot.getRef().updateChildren(objectHashMap);
             }
         }, 2000);
     }

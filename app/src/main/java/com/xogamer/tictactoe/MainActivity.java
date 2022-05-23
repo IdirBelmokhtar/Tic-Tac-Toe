@@ -127,6 +127,8 @@ public class MainActivity extends AppCompatActivity {
 
                                         acceptFriend.dismiss();
 
+                                        Toast.makeText(MainActivity.this, player.getFriendId() + "\n" + player.getId(), Toast.LENGTH_LONG).show();
+
                                         //start Parties in Firebase
                                         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Parties");
                                         HashMap<String, Object> objectHashMap = new HashMap<>();
@@ -136,25 +138,15 @@ public class MainActivity extends AppCompatActivity {
                                         objectHashMap.put("play","true");
                                         objectHashMap.put("turn",false);
 
-                                        objectHashMap.put("itm1",false);
-                                        objectHashMap.put("itm2",false);
-                                        objectHashMap.put("itm3",false);
-                                        objectHashMap.put("itm4",false);
-                                        objectHashMap.put("itm5",false);
-                                        objectHashMap.put("itm6",false);
-                                        objectHashMap.put("itm7",false);
-                                        objectHashMap.put("itm8",false);
-                                        objectHashMap.put("itm9",false);
-
-                                        objectHashMap.put("itm1_",false);
-                                        objectHashMap.put("itm2_",false);
-                                        objectHashMap.put("itm3_",false);
-                                        objectHashMap.put("itm4_",false);
-                                        objectHashMap.put("itm5_",false);
-                                        objectHashMap.put("itm6_",false);
-                                        objectHashMap.put("itm7_",false);
-                                        objectHashMap.put("itm8_",false);
-                                        objectHashMap.put("itm9_",false);
+                                        objectHashMap.put("itm1","false");
+                                        objectHashMap.put("itm2","false");
+                                        objectHashMap.put("itm3","false");
+                                        objectHashMap.put("itm4","false");
+                                        objectHashMap.put("itm5","false");
+                                        objectHashMap.put("itm6","false");
+                                        objectHashMap.put("itm7","false");
+                                        objectHashMap.put("itm8","false");
+                                        objectHashMap.put("itm9","false");
 
                                         reference.push().setValue(objectHashMap);
                                     }
@@ -306,6 +298,8 @@ public class MainActivity extends AppCompatActivity {
                                                         HashMap<String, Object> hashMap = new HashMap<>();
                                                         hashMap.put("play", "");
                                                         dataSnapshot.getRef().updateChildren(hashMap);
+
+                                                        Toast.makeText(MainActivity.this, request.getFriendId() + "\n" + request.getId(), Toast.LENGTH_LONG).show();
                                                     }
                                                 }
                                             }
